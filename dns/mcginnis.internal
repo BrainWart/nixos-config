@@ -1,0 +1,17 @@
+$TTL	3h
+@	IN	SOA	ns1	admin	(
+				1	; Serial
+				3h	; Refresh after 3 hours
+				1h	; Retry after 1 hour
+				1w	; Expire after 1 week
+				1h )	; Negative caching TTL of 1 day
+@	IN	NS	ns1
+
+
+ns1	IN	A	100.74.231.25
+pve	IN	A	100.116.71.11
+ds718	IN	A	100.87.242.79
+nixos	IN	A	100.87.173.50
+kube	IN	A	100.69.240.109
+gitea	IN	A	100.69.240.109
+drone	IN	A	100.69.240.109
