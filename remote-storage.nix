@@ -27,14 +27,14 @@
   systemd.mounts = [{
     description = "Remote storage mount";
     what = "//ds718.mcginnis.internal/kubernetes/";
-    where = "/run/mount/storage";
+    where = "/opt/kubernetes";
     type = "cifs";
     options = "rw,credentials=/run/remote-storage-credentials";
   }];
 
   systemd.automounts = [{
     description = "Automount for remote storage";
-    where = "/run/mount/storage";
+    where = "/opt/kubernetes";
     wantedBy = ["multi-user.target"];
     requires = ["remote-storage-credentials.service"];
   }];
