@@ -7,6 +7,10 @@
       master = true;
       file = ./dns/mcginnis.internal;
     };
+    "dev.mcginnis.internal" = {
+      master = true;
+      file = ./dns/dev.mcginnis.internal;
+    };
   };
 })
 
