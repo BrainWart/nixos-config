@@ -105,6 +105,7 @@
   };
   services.qemuGuest.enable = true;
 
+  security.pki.certificateFiles = [ ./certs/mcginnis-internal.pem ];
   services.resolved.enable = true;
 
   security.sudo.wheelNeedsPassword = false;
