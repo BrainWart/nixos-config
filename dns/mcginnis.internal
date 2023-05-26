@@ -15,3 +15,10 @@ nixos	IN	A	100.87.173.50
 kube	IN	A	100.69.240.109
 gitea	IN	A	100.69.240.109
 drone	IN	A	100.69.240.109
+
+11.71.116.100.in-addr.arpa.	IN	PTR	pve.mcginnis.internal.
+79.242.87.100.in-addr.arpa.	IN	PTR	ds718.mcginnis.internal.
+50.173.87.100.in-addr.arpa.	IN	PTR	nixos.mcginnis.internal.
+109.240.69.100.in-addr.arpa.	IN	PTR	kube.mcginnis.internal.
+109.240.69.100.in-addr.arpa.	IN	PTR	gitea.mcginnis.internal.
+109.240.69.100.in-addr.arpa.	IN	PTR	drone.mcginnis.internal.
