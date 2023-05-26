@@ -1,5 +1,6 @@
 ({ config, pkgs, modulesPath, lib, ... }:
 {
+  boot.supportedFilesystems = [ "nfs" ];
   boot.kernel.sysctl = {
     "fs.inotify.max_user_instances" = 512;
     "fs.inotify.max_user_watches" = 524288;
