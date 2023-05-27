@@ -23,7 +23,6 @@
           ./base-pve.nix
           ./tailscale.nix
           ./kube.nix
-          ./remote-storage.nix
         ];
       };
       dns = nixpkgs.lib.nixosSystem {
