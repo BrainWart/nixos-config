@@ -11,7 +11,11 @@
       nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ({ networking.hostName = "nixos"; })
+          ({ config, ... }: {
+            networking.hostName = "nixos";
+            virtualisation.docker.enable = true;
+            users.users.mcginnisc.extraGroups = [ "docker" ];
+          })
           ./base-pve.nix
           ./tailscale.nix
         ];
