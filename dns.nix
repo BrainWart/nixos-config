@@ -11,6 +11,10 @@
       master = true;
       file = ./dns/dev.mcginnis.internal;
     };
+    "100.in-arpa.arpa" = {
+      master = true;
+      file = ./dns/100.in-arpa.arpa;
+    };
   };
 })
 
