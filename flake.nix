@@ -3,10 +3,14 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
+    systems.url = "github:nix-systems/default-linux";
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.systems.follows = "systems";
+    };
   };
 
-  outputs = { self, nixpkgs, nixwsl, flake-utils }:
+  outputs = { self, nixpkgs, flake-utils, ... }:
     flake-utils.lib.eachDefaultSystem (system: 
       let pkgs = nixpkgs.legacyPackages.${system}; in
       {
@@ -22,7 +26,7 @@
               inherit system;
 
               modules = [
-                ({ config, ... }: { networking.hostName = "nixos"; })
+                ({ networking.hostName = "nixos"; })
                 ./providers/pve.nix
                 ./tasks/tailscale.nix
               ];
@@ -40,7 +44,7 @@
             };
 
             dns = nixpkgs.lib.nixosSystem {
-              inherit system pkgs;
+              inherit system;
 
               modules = [
                 ({ networking.hostName = "dns"; })
@@ -51,7 +55,7 @@
             };
 
             wsl = nixpkgs.lib.nixosSystem {
-              inherit system pkgs;
+              inherit system;
 
               modules = [
                 ({ networking.hostName = "wsl"; })

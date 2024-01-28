@@ -3,11 +3,6 @@
   environment.systemPackages = [ pkgs.tailscale ];
   services.tailscale.enable = true;
 
-  # for the services on tailscale
-  security.pki.certificateFiles = [
-    ../certs/mcginnis-internal.pem
-  ];
-
   systemd.services.tailscale-autoconnect = {
     description = "Automatic connection to Tailscale";
 

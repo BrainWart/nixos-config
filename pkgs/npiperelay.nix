@@ -3,6 +3,7 @@
 , buildGoModule
 , fetchFromGitHub
 , applyPatches
+, pkgs
 , ...
 }:
 
@@ -56,4 +57,7 @@ in
     maintainers = [ ];
     platforms = [ "x86_64-linux" "aarch64-linux" ];
   };
-}).overrideAttrs (old: old // { GOOS = "windows"; GOARCH = "arm64"; })
+}).overrideAttrs (old: old // {
+  GOOS = "windows";
+  GOARCH = if (pkgs.system == "aarch64-linux") then "arm64" else "amd64";
+})
