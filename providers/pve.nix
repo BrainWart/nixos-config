@@ -2,6 +2,7 @@
 {
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
+    ./base.nix
   ];
 
   environment.etc.nixos.source = "/persist/nixos";

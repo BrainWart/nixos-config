@@ -3,41 +3,63 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs }: {
+  outputs = { self, nixpkgs, nixwsl, flake-utils }:
+    flake-utils.lib.eachDefaultSystem (system: 
+      let pkgs = nixpkgs.legacyPackages.${system}; in
+      {
+        devShells.default = pkgs.mkShell {
+          buildInputs = [
+            pkgs.nixd
+          ];
+        };
 
-    nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ({ config, ... }: {
-            networking.hostName = "nixos";
-            virtualisation.docker.enable = true;
-            users.users.mcginnisc.extraGroups = [ "docker" ];
-          })
-          ./base-pve.nix
-          ./tailscale.nix
-        ];
-      };
-      kube = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ({ networking.hostName = "kube"; })
-          ./base-pve.nix
-          ./tailscale.nix
-          ./kube.nix
-        ];
-      };
-      dns = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ({ networking.hostName = "dns"; })
-          ./base-pve.nix
-          ./tailscale.nix
-          ./dns.nix
-        ];
-      };
-    };
-  };
+        packages = {
+          nixosConfigurations = {
+            nixos = nixpkgs.lib.nixosSystem {
+              inherit system;
+
+              modules = [
+                ({ config, ... }: { networking.hostName = "nixos"; })
+                ./providers/pve.nix
+                ./tasks/tailscale.nix
+              ];
+            };
+
+            kube = nixpkgs.lib.nixosSystem {
+              inherit system;
+
+              modules = [
+                ({ networking.hostName = "kube"; })
+                ./providers/pve.nix
+                ./tasks/tailscale.nix
+                ./tasks/kube.nix
+              ];
+            };
+
+            dns = nixpkgs.lib.nixosSystem {
+              inherit system pkgs;
+
+              modules = [
+                ({ networking.hostName = "dns"; })
+                ./providers/pve.nix
+                ./tasks/tailscale.nix
+                ./tasks/dns.nix
+              ];
+            };
+
+            wsl = nixpkgs.lib.nixosSystem {
+              inherit system pkgs;
+
+              modules = [
+                ({ networking.hostName = "wsl"; })
+                ./providers/wsl.nix
+              ];
+            };
+          };
+        };
+      }
+    );
 }
