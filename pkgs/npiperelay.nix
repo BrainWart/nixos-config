@@ -22,6 +22,9 @@ let
     patches = [ ];
   };
 
+  GOOS = "windows";
+  GOARCH = if (pkgs.system == "aarch64-linux") then "arm64" else "amd64";
+
 in
 
 (buildGoModule {
@@ -41,7 +44,7 @@ in
   ];
 
   postBuild = ''
-    dir=$GOPATH/bin/windows_arm64
+    dir=$GOPATH/bin/${GOOS}_${GOARCH}
     if [[ -n "$(shopt -s nullglob; echo $dir/*)" ]]; then
       mv $dir/* $dir/..
     fi
@@ -58,6 +61,5 @@ in
     platforms = [ "x86_64-linux" "aarch64-linux" ];
   };
 }).overrideAttrs (old: old // {
-  GOOS = "windows";
-  GOARCH = if (pkgs.system == "aarch64-linux") then "arm64" else "amd64";
+  inherit GOOS GOARCH;
 })
