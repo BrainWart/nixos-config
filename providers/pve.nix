@@ -71,6 +71,6 @@
   }) options.services.openssh.hostKeys.default;
 
   services.qemuGuest.enable = true;
-  services.resolved.enable = true;
+  services.resolved.enable = pkgs.lib.mkDefault true;
 })
 

@@ -1,20 +1,33 @@
 ({ config, pkgs, modulesPath, lib, ... }:
 {
-  services.bind.enable = true;
-  services.bind.forwarders = [ "1.1.1.1" "8.8.8.8" ];
-  services.bind.zones = {
-    "mcginnis.internal" = {
-      master = true;
-      file = ./dns/mcginnis.internal;
-    };
-    "dev.mcginnis.internal" = {
-      master = true;
-      file = ./dns/dev.mcginnis.internal;
-    };
-    "100.in-arpa.arpa" = {
-      master = true;
-      file = ./dns/100.in-arpa.arpa;
-    };
+  services.coredns = {
+    enable = true;
+    config = ''
+      dev.mcginnis.internal {
+        file ${./dns/dev.mcginnis.internal}
+      }
+      
+      mcginnis.internal {
+        hosts {
+          100.103.22.75 dns.mcginnis.internal ns1.mcginnis.internal dns
+          100.116.71.11 pve.mcginnis.internal pve
+          100.87.242.79 ds718.mcginnis.internal idm.mcginnis.internal ha.mcginnis.internal ds718 idm ha
+          100.87.173.50 nixos.mcginnis.internal nixos
+          100.69.240.109 kube.mcginnis.internal gitea.mcginnis.internal drone.mcginnis.internal kube gitea drone
+          fallthrough
+        }
+      }
+
+      . {
+        cache
+        forward . 1.1.1.1 8.8.8.8
+      }
+    '';
   };
+
+  systemd.services.coredns.serviceConfig.CapabilityBoundingSet = pkgs.lib.mkForce "cap_net_bind_service cap_net_admin";
+  systemd.services.coredns.serviceConfig.AmbientCapabilities = pkgs.lib.mkForce "cap_net_bind_service cap_net_admin";
+
+  services.resolved.enable = false;
 })
 

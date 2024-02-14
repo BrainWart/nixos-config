@@ -17,4 +17,5 @@ gitea	IN	A	100.69.240.109
 drone	IN	A	100.69.240.109
 
 idm	IN	CNAME	ds718.mcginnis.internal.
+ha	IN	CNAME	ds718.mcginnis.internal.
 
