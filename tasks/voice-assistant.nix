@@ -27,7 +27,9 @@
   };
 
   # needs access to /proc/cpuinfo
-  systemd.services."wyoming-faster-whisper-en".serviceConfig.ProcSubset =
-    lib.mkForce "all";
+  systemd.services."wyoming-faster-whisper-en".serviceConfig.ProcSubset = lib.mkForce "all";
+
+  systemd.services."wyoming-faster-whisper-en".after = lib.mkForce [ "network.target" ];
+  systemd.services."wyoming-piper-en".after = lib.mkForce [ "network.target" ];
 })
 
