@@ -54,6 +54,17 @@
               ];
             };
 
+            voice-assistant = nixpkgs.lib.nixosSystem {
+              inherit system;
+
+              modules = [
+                ({ networking.hostName = "voice-assistant"; })
+                ./providers/pve.nix
+                ./tasks/tailscale.nix
+                ./tasks/voice-assistant.nix
+              ];
+            };
+
             wsl = nixpkgs.lib.nixosSystem {
               inherit system;
 
