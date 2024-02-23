@@ -35,4 +35,16 @@ in
       ${socat}/bin/socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"${npiperelay}/bin/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork
     '')
   ];
+  vscode-remote-workaround.enable = true;
+  wsl.extraBin = 
+    map
+    (name: { inherit name; src = "${pkgs.coreutils}/bin/${name}"; })
+    [ "uname" "dirname" "rm" "mkdir" "wc" "date" "mv" "sleep" "readlink" "cat" ]
+  ++ [
+    (let name = "tar"; in { inherit name; src = "${pkgs.gnutar}/bin/${name}"; })
+    (let name = "gzip"; in { inherit name; src = "${pkgs.gzip}/bin/${name}"; })
+    (let name = "find"; in { inherit name; src = "${pkgs.findutils}/bin/${name}"; })
+    (let name = "getconf"; in { inherit name; src = "${pkgs.getconf}/bin/${name}"; })
+    (let name = "sed"; in { inherit name; src = "${pkgs.gnused}/bin/${name}"; })
+  ];
 }

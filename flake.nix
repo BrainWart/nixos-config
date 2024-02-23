@@ -4,13 +4,14 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     systems.url = "github:nix-systems/default-linux";
+    vscode-remote-workaround.url = "github:K900/vscode-remote-workaround";
     flake-utils = {
       url = "github:numtide/flake-utils";
       inputs.systems.follows = "systems";
     };
   };
 
-  outputs = { self, nixpkgs, flake-utils, ... }:
+  outputs = { self, nixpkgs, flake-utils, ... } @ inputs:
     flake-utils.lib.eachDefaultSystem (system: 
       let pkgs = nixpkgs.legacyPackages.${system}; in
       {
@@ -70,6 +71,7 @@
 
               modules = [
                 ({ networking.hostName = "wsl"; })
+                inputs.vscode-remote-workaround.nixosModules.default
                 ./providers/wsl.nix
               ];
             };
