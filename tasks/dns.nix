@@ -11,7 +11,7 @@
         hosts {
           100.103.22.75 dns.mcginnis.internal ns1.mcginnis.internal dns
           100.116.71.11 pve.mcginnis.internal pve
-          100.87.242.79 ds718.mcginnis.internal idm.mcginnis.internal ha.mcginnis.internal ds718 idm ha
+          100.87.242.79 ds718.mcginnis.internal idm.mcginnis.internal ha.mcginnis.internal grafana.mcginnis.internal ds718 idm ha grafana
           100.87.173.50 nixos.mcginnis.internal nixos
           100.69.240.109 kube.mcginnis.internal gitea.mcginnis.internal drone.mcginnis.internal kube gitea drone
           fallthrough
