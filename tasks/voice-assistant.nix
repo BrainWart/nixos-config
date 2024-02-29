@@ -3,7 +3,7 @@
   services.wyoming.piper = {
     servers = {
       "en" = {
-        enable = false;
+        enable = true;
         # see https://github.com/rhasspy/rhasspy3/blob/master/programs/tts/piper/script/download.py
         voice = "en_US-amy-medium";
         uri = "tcp://0.0.0.0:10200";
@@ -17,7 +17,7 @@
       "en" = {
         enable = true;
         # see https://github.com/rhasspy/rhasspy3/blob/master/programs/asr/faster-whisper/script/download.py
-        model = "small-int8";
+        model = "base";
         language = "en";
         uri = "tcp://0.0.0.0:10300";
         device = "cuda";
@@ -27,7 +27,20 @@
 
   # needs access to /proc/cpuinfo
   systemd.services."wyoming-faster-whisper-en" = {
-    serviceConfig.ProcSubset = lib.mkForce "all";
+    serviceConfig = {
+      SystemCallFilter = lib.mkForce [ ];
+      ProcSubset = lib.mkForce "all";
+      ExecStart = lib.mkForce ''
+        ${config.services.wyoming.faster-whisper.package}/bin/wyoming-faster-whipser \
+          --data-dir $STATE_DIRECTORY \
+          --download-dir $STATE_DIRECTORY \
+          --uri tcp://0.0.0.0:10300 \
+          --device cuda \
+          --model base \
+          --language en \
+          --beam-size 4
+      '';
+    };
     after = lib.mkForce [ "network.target" ];
   };
 

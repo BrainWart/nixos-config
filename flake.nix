@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     systems.url = "github:nix-systems/default-linux";
     vscode-remote-workaround.url = "github:K900/vscode-remote-workaround";
     flake-utils = {
@@ -31,6 +32,7 @@
                 ({ nix.settings = { max-jobs = 2; cores = 8; }; })
                 ./providers/pve.nix
                 ./tasks/tailscale.nix
+                ./tasks/voice-assistant.nix
               ];
             };
 
@@ -62,10 +64,18 @@
               inherit system;
 
               modules = [
-                ({
+                ({ config, ... }: {
                   networking.hostName = "voice-assistant";
-                  nixpkgs.config.allowUnfree = true;
-                  # nixpkgs.config.cudaSupport = true;
+
+                  nixpkgs.config = {
+                    allowUnfree = true;
+                    # cudaSupport = true;
+                  };
+
+                  nix.settings = {
+                    # trusted-public-keys = [ "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E=" ];
+                    # substituters = [ "https://cuda-maintainers.cachix.org" ];
+                  };
 
                   services.xserver.videoDrivers = ["nvidia"];
 
@@ -75,7 +85,7 @@
                     open = false;
                     nvidiaSettings = true;
                     nvidiaPersistenced = true;
-                    # package = pkgs.kernelPackages.nvidiaPackages.stable;
+                    package = config.boot.kernelPackages.nvidiaPackages.production;
                   };
 
                   environment.systemPackages = [

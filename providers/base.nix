@@ -15,6 +15,13 @@
       ../certs/mcginnis-internal.pem
     ];
 
+    nix.registry = {
+      nixpkgs.to = {
+        type = "path";
+        path = pkgs.path;
+      };
+    };
+
     users.mutableUsers = false;
     users.users.mcginnisc = {
       isNormalUser = true;
