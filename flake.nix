@@ -32,7 +32,6 @@
                 ({ nix.settings = { max-jobs = 2; cores = 8; }; })
                 ./providers/pve.nix
                 ./tasks/tailscale.nix
-                ./tasks/voice-assistant.nix
               ];
             };
 
@@ -64,51 +63,7 @@
               inherit system;
 
               modules = [
-                ({ config, ... }: {
-                  networking.hostName = "voice-assistant";
-
-                  nixpkgs.config = {
-                    allowUnfree = true;
-                    # cudaSupport = true;
-                  };
-
-                  nix.settings = {
-                    # trusted-public-keys = [ "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E=" ];
-                    # substituters = [ "https://cuda-maintainers.cachix.org" ];
-                  };
-
-                  services.xserver.videoDrivers = ["nvidia"];
-
-                  hardware.opengl.enable = true;
-                  hardware.nvidia = {
-                    modesetting.enable = true;
-                    open = false;
-                    nvidiaSettings = true;
-                    nvidiaPersistenced = true;
-                    package = config.boot.kernelPackages.nvidiaPackages.production;
-                  };
-
-                  environment.systemPackages = [
-                    # pkgs.cudatoolkit
-                  ];
-
-                  nixpkgs.overlays = [
-                    (_: prev: {
-                      ctranslate2 = prev.ctranslate2.override {
-                        withCUDA = true;
-                        withCuDNN = true;
-                        stdenv = prev.gcc12Stdenv;
-                      };
-                      python3 = prev.python3.override {
-                        packageOverrides = (_: pythonPrev: {
-                          torch = pythonPrev.torch.override {
-                            cudaSupport = true;
-                          };
-                        });
-                      };
-                    })
-                  ];
-                })
+                ({ networking.hostName = "voice-assistant"; })
                 ./providers/pve.nix
                 ./tasks/tailscale.nix
                 ./tasks/voice-assistant.nix
