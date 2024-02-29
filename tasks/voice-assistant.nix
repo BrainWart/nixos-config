@@ -20,7 +20,7 @@
         model = "base";
         language = "en";
         uri = "tcp://0.0.0.0:10300";
-        device = "cuda";
+        device = "cpu";
       };
     };
   };
@@ -35,7 +35,7 @@
           --data-dir $STATE_DIRECTORY \
           --download-dir $STATE_DIRECTORY \
           --uri tcp://0.0.0.0:10300 \
-          --device cuda \
+          --device cpu \
           --model base \
           --language en \
           --beam-size 4
