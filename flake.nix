@@ -14,7 +14,7 @@
 
   outputs = { self, nixpkgs, flake-utils, ... } @ inputs:
     flake-utils.lib.eachDefaultSystem (system: 
-      let pkgs = nixpkgs.legacyPackages.${system}; in
+      let pkgs = import nixpkgs { inherit system; config.allowUnfree = true; }; in
       {
         devShells.default = pkgs.mkShell {
           buildInputs = [
@@ -29,8 +29,44 @@
 
               modules = [
                 ({ networking.hostName = "nixos"; })
-                ({ nix.settings = { max-jobs = 2; cores = 8; }; })
+                # ({ nix.settings = { max-jobs = 2; cores = 8; }; })
+                ({ lib, config, ... }: {
+                  nixpkgs.config.allowUnfree = true;
+                  hardware.opengl.enable = true;
+                  hardware.opengl.driSupport32Bit = true;
+                  hardware.nvidia = {
+                    package = config.boot.kernelPackages.nvidiaPackages.production;
+                    modesetting.enable = true;
+                    open = false;
+                    nvidiaSettings = true;
+                  };
+                  services.xserver.enable = true;
+                  services.xserver.videoDrivers = [ "nvidia" ];
+                  services.xserver.desktopManager.plasma5.enable = true;
+                  services.xserver.displayManager.lightdm.enable = true;
+                  users.users.mcginnisc.linger = true;
+                  services.xrdp = {
+                    enable = true;
+                    defaultWindowManager = "startplasma-x11";
+                    extraConfDirCommands = ''
+                      substituteInPlace $out/xrdp.ini --replace port=-1 port=ask-1
+                    '';
+                  };
+                  environment.systemPackages = [
+                    pkgs.firefox
+                  ];
+                })
                 ./providers/pve.nix
+                ./tasks/tailscale.nix
+              ];
+            };
+
+            test = nixpkgs.lib.nixosSystem {
+              inherit system;
+
+              modules = [
+                ({ networking.hostName = "test"; })
+                ./providers/base.nix
                 ./tasks/tailscale.nix
               ];
             };

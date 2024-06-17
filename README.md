@@ -8,3 +8,7 @@
 - Step CA - mcginnis.internal ACME server
 - Node Red - Has book update notifier
 
+
+# Build test image for azure
+
+nix run github:nix-community/nixos-generators#nixos-generate -- --flake .#test -f azure
