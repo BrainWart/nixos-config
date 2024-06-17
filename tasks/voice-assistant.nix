@@ -41,10 +41,10 @@
           --beam-size 4
       '';
     };
-    after = lib.mkForce [ "network-online.target" ];
+    requires = [ "network-online.target" ];
   };
 
-  systemd.services."wyoming-piper-en".after = lib.mkForce [ "network-online.target" ];
+  systemd.services."wyoming-piper-en".requires = [ "network-online.target" ];
 
   networking.firewall.allowedTCPPorts = [ 10300 10200 ];
 })
