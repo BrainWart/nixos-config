@@ -6,6 +6,8 @@
     "fs.inotify.max_user_watches" = 524288;
   };
 
+  services.resolved.enable = false;
+
   systemd.services.k3s.serviceConfig.KillMode = lib.mkForce "mixed";
   services.k3s = {
     enable = true;

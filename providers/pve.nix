@@ -72,5 +72,6 @@
 
   services.qemuGuest.enable = true;
   services.resolved.enable = pkgs.lib.mkDefault true;
+  services.resolved.fallbackDns = [];
 })
 
