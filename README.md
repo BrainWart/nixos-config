@@ -12,3 +12,7 @@
 # Build test image for azure
 
 nix run github:nix-community/nixos-generators#nixos-generate -- --flake .#test -f azure
+
+# Build auto installer iso
+
+nix build .#nixosConfigurations.installer.config.system.build.isoImage
