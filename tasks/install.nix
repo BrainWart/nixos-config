@@ -1,6 +1,6 @@
 ({ config, pkgs, modulesPath, lib, ... }:
 let
-  builder = with pkgs; writeScriptBin "buildSystem" ''
+  builder = with pkgs; writeScript "buildSystem" ''
     if [ -e /dev/disk/by-label/cidata ] ; then
       mkdir -p /tmp/cidata
       ${mount}/bin/mount /dev/disk/by-label/cidata /tmp/cidata
@@ -15,6 +15,21 @@ let
     ${disko}/bin/disko-install -f ${config.system.autoUpgrade.flake}#$HOSTNAME
   '';
 in {
-  environment.systemPackages = [ builder ];
+  systemd.services.autoinstall = {
+    description = "Automatic installation";
+
+    after = [ "network-pre.target" ];
+    wants = [ "network-pre.target" ];
+    wantedBy = [ "multi-user.target" ];
+    required = [ "getty@tty1.service" ];
+
+    script = "${builder}";
+
+    serviceConfig = {
+      StandardOutput = "tty";
+      StandardInput = "tty";
+      TTYPath = "tty1";
+    };
+  };
 })
 
