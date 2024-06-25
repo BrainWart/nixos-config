@@ -1,6 +1,9 @@
 ({ config, pkgs, modulesPath, lib, ... }:
 let
   builder = with pkgs; writeScript "buildSystem" ''
+    set -e
+    sleep 30
+
     if [ -e /dev/disk/by-label/cidata ] ; then
       mkdir -p /tmp/cidata
       ${mount}/bin/mount /dev/disk/by-label/cidata /tmp/cidata
@@ -11,8 +14,10 @@ let
       HOSTNAME="$(${systemd}/bin/systemd-ask-password --timeout=0 "Hostname:")"
     fi
 
-    echo "doing disko-install on ${config.system.autoUpgrade.flake} $HOSTNAME"
-    ${disko}/bin/disko-install -f ${config.system.autoUpgrade.flake}#$HOSTNAME
+    DISKO="$(nix build ${config.system.autoUpgrade.flake}#nixosConfigurations.${HOSTNAME}.config.system.build.diskoScript --print-out-paths)"
+    $DISKO
+    ${nixos-install-tools}/bin/nixos-install --flake ${config.system.autoUpgrade.flake}#$HOSTNAME
+    reboot
   '';
 in {
   systemd.services.autoinstall = {
@@ -21,7 +26,7 @@ in {
     after = [ "network-pre.target" ];
     wants = [ "network-pre.target" ];
     wantedBy = [ "multi-user.target" ];
-    required = [ "getty@tty1.service" ];
+    requires = [ "getty@tty1.service" ];
 
     script = "${builder}";
 
