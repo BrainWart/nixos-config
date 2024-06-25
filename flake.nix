@@ -106,6 +106,30 @@
               ];
             };
 
+            installer = nixpkgs.lib.nixosSystem {
+              inherit system;
+
+              modules = [
+                ({modulesPath, ...}: {
+                  imports = [
+                    (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
+                    (modulesPath + "/installer/cd-dvd/channel.nix")
+                  ];
+                  config = {
+                    system.autoUpgrade.flake = "https://gitea.dev.mcginnis.internal/mcginnisc/nixos-config.git";
+                    networking.hostName = pkgs.lib.mkForce "";
+                    environment.systemPackages = [
+                      pkgs.git
+                      pkgs.tmux
+                    ];
+                    nix.extraOptions = "experimental-features = nix-command flakes repl-flake";
+                  };
+                })
+                ./tasks/tailscale.nix
+                ./tasks/install.nix
+              ];
+            };
+
             wsl = nixpkgs.lib.nixosSystem {
               inherit system;
 
