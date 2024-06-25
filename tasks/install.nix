@@ -10,7 +10,7 @@
 
     path = [ pkgs.nix pkgs.nixos-install-tools ];
 
-    script = ''
+    script = with pkgs; ''
       sleep 5
 
       if [ -e /dev/disk/by-label/cidata ] ; then
