@@ -12,17 +12,21 @@
   boot.initrd.postDeviceCommands = pkgs.lib.mkBefore ''
     mkdir -p /mnt
     mount -o subvol=/ /dev/disk/by-label/system /mnt
-    btrfs subvolume list -o /mnt/root |
-    cut -f9 -d' ' |
-    while read subvolume; do
-    echo "deleting /$subvolume subvolume..."
-    btrfs subvolume delete "/mnt/$subvolume"
-    done &&
+
+    if [ ! -e /mnt/snapshots/root-blank ] ; then
+      echo "root-blank not found, creating!"
+      btrfs subvolume create /mnt/root-blank
+      mkdir -p /mnt/snapshots
+      btrfs subvolume snapshot -r /mnt/snapshots/root-blank
+      btrfs subvolume delete /mnt/root-blank
+    fi
+
     echo "deleting /root subvolume..." &&
     btrfs subvolume delete /mnt/root
 
     echo "restoring blank /root subvolume..."
     btrfs subvolume snapshot /mnt/snapshots/root-blank /mnt/root
+
     umount /mnt
     rmdir /mnt
   '';
@@ -32,32 +36,59 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-label/system";
-    fsType = "btrfs";
-    options = [ "subvol=root" ];
+  disko.devices = {
+    disk = {
+      vdb = {
+        type = "disk";
+        device = "/dev/sda";
+        content = {
+          type = "gpt";
+          partitions = {
+            ESP = {
+              priority = 1;
+              name = "ESP";
+              start = "1M";
+              end = "128M";
+              type = "EF00";
+              content = {
+                type = "filesystem";
+                format = "vfat";
+                mountpoint = "/boot";
+              };
+            };
+            system = {
+              size = "100%";
+              content = {
+                type = "btrfs";
+                extraArgs = [ "-f" ];
+                subvolumes = {
+                  "/root" = {
+                    mountpoint = "/";
+                  };
+                  "/home" = {
+                    mountpoint = "/home";
+                  };
+                  "/persist" = {
+                    mountpoint = "/persist";
+                  };
+                  "/nix" = {
+                    mountOptions = [ "noatime" ];
+                    mountpoint = "/nix";
+                  };
+                  "/swap" = {
+                    mountpoint = "/.swapvol";
+                    swap = {
+                      swapfile.size = "1G";
+                    };
+                  };
+                };
+              };
+            };
+          };
+        };
+      };
+    };
   };
-
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-label/system";
-    fsType = "btrfs";
-    options = [ "subvol=nix" ];
-  };
-
-  fileSystems."/persist" = {
-    device = "/dev/disk/by-label/system";
-    fsType = "btrfs";
-    options = [ "subvol=persist" ];
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-label/BOOT";
-    fsType = "vfat";
-  };
-
-  swapDevices = [
-    { device = "/dev/disk/by-label/swap"; }
-  ];
 
   networking.useDHCP = lib.mkDefault true;
 

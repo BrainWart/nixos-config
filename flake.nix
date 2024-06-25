@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     systems.url = "github:nix-systems/default-linux";
     vscode-remote-workaround.url = "github:K900/vscode-remote-workaround";
@@ -61,12 +65,13 @@
               ];
             };
 
-            test = nixpkgs.lib.nixosSystem {
+            logs = nixpkgs.lib.nixosSystem {
               inherit system;
 
               modules = [
-                ({ networking.hostName = "test"; })
-                ./providers/base.nix
+                inputs.disko.nixosModules.disko
+                ({ networking.hostName = "logs"; })
+                ./providers/pve.nix
                 ./tasks/tailscale.nix
               ];
             };
@@ -116,7 +121,7 @@
                     (modulesPath + "/installer/cd-dvd/channel.nix")
                   ];
                   config = {
-                    system.autoUpgrade.flake = "https://gitea.dev.mcginnis.internal/mcginnisc/nixos-config.git";
+                    system.autoUpgrade.flake = "github:brainwart/nixos-config";
                     networking.hostName = pkgs.lib.mkForce "";
                     environment.systemPackages = [
                       pkgs.git
