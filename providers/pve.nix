@@ -5,8 +5,6 @@
     ./base.nix
   ];
 
-  environment.etc.nixos.source = "/persist/nixos";
-
   boot.initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.initrd.postDeviceCommands = pkgs.lib.mkBefore ''
@@ -93,8 +91,6 @@
   networking.useDHCP = lib.mkDefault true;
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
-  mcginnis.homePrefix = "/persist";
 
   services.openssh.enable = true;
   services.openssh.hostKeys = map (key: key // {
