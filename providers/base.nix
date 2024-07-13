@@ -45,7 +45,10 @@
       };
     };
 
-    system.autoUpgrade.flake = "github:brainwart/nixos-config";
+    system.autoUpgrade = {
+      flake = "github:brainwart/nixos-config";
+      enable = true;
+    };
 
     security.sudo.wheelNeedsPassword = false;
     nix.settings.trusted-users = [ "@wheel" ];

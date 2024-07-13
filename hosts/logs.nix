@@ -6,4 +6,9 @@
   ];
 
   networking.hostName = "logs";
+
+  services.loki = {
+    enable = true;
+    dataDir = "/persist/var/lib/loki";
+  };
 }
