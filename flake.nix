@@ -44,7 +44,7 @@
 
         packages = {
           inherit nixosConfigurations;
-        }
+        };
       }
     )) // {
       nixosConfigurations = self.packages.nixosConfigurations.x86_64-linux;
