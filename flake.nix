@@ -47,6 +47,6 @@
         };
       }
     )) // {
-      nixosConfigurations = self.packages.nixosConfigurations.x86_64-linux;
+      nixosConfigurations = self.packages.x86_64-linux.nixosConfigurations;
     };
 }
