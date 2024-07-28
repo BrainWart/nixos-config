@@ -5,7 +5,7 @@
     ../tasks/tailscale.nix
   ];
 
-  networking.hostName = "nixos";
+  networking.hostName = "home-dev";
   # nixpkgs.config.allowUnfree = true;
   hardware.graphics.enable = true;
   hardware.graphics.enable32Bit = true;
