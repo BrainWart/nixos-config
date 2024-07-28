@@ -16,7 +16,7 @@
   };
 
   outputs = { self, nixpkgs, flake-utils, ... } @ inputs:
-    flake-utils.lib.eachDefaultSystem (system:
+    (flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
         nixosConfigurations = with builtins; listToAttrs (map (host: {
@@ -46,7 +46,7 @@
           inherit nixosConfigurations;
         }
       }
-    ) // {
+    )) // {
       nixosConfigurations = self.packages.nixosConfigurations.x86_64-linux;
     };
 }
