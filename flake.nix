@@ -17,8 +17,25 @@
 
   outputs = { self, nixpkgs, flake-utils, ... } @ inputs:
     flake-utils.lib.eachDefaultSystem (system: 
-      let pkgs = import nixpkgs { inherit system; config.allowUnfree = true; }; in
+      let
+        pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
+        nixosConfigurations = with builtins; listToAttrs (map (host: {
+          name = host;
+          value = nixpkgs.lib.nixosSystem {
+            inherit system;
+            specialArgs = { inherit inputs; }; 
+            modules = [
+              (import (./hosts + "/${host}.nix"))
+            ];
+          };
+        }) (let
+          entries = readDir ./hosts;
+        in map (key: elemAt (match "(.+)\\.nix" (baseNameOf key)) 0)
+          (filter (key: (getAttr key entries) == "regular") (attrNames entries))));
+      in
       {
+        inherit nixosConfigurations;
+
         devShells.default = pkgs.mkShell {
           buildInputs = [
             pkgs.nixd
@@ -26,20 +43,7 @@
         };
 
         packages = {
-          nixosConfigurations = with builtins; listToAttrs (map (host: {
-            name = host;
-            value = nixpkgs.lib.nixosSystem {
-              inherit system;
-              specialArgs = { inherit inputs; }; 
-
-              modules = [
-                (import (./hosts + "/${host}.nix"))
-              ];
-            };
-          }) (let
-            entries = readDir ./hosts;
-          in map (key: elemAt (match "(.+)\\.nix" (baseNameOf key)) 0)
-            (filter (key: (getAttr key entries) == "regular") (attrNames entries))));
+          inherit nixosConfigurations;
         };
       }
     );
