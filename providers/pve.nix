@@ -36,7 +36,7 @@
 
   disko.devices = {
     disk = {
-      vdb = {
+      main = {
         type = "disk";
         device = "/dev/sda";
         content = {
