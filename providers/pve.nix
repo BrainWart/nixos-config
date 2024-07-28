@@ -88,7 +88,7 @@
     };
   };
 
-  mcginnis.homePrefix = "/persist"
+  mcginnis.homePrefix = "/persist";
 
   networking.useDHCP = lib.mkDefault true;
 
