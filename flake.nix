@@ -7,16 +7,11 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    systems.url = "github:nix-systems/default-linux";
     vscode-remote-workaround.url = "github:K900/vscode-remote-workaround";
-    flake-utils = {
-      url = "github:numtide/flake-utils";
-      inputs.systems.follows = "systems";
-    };
   };
 
   outputs = { self, nixpkgs, flake-utils, ... } @ inputs:
-    flake-utils.lib.eachDefaultSystem (system: 
+    map (system: 
       let
         pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
         nixosConfigurations = with builtins; listToAttrs (map (host: {
@@ -46,5 +41,5 @@
           inherit nixosConfigurations;
         };
       }
-    );
+    ) [ "aarch64-linux" "x86_64-linux" ];
 }
