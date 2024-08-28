@@ -1,8 +1,8 @@
 ({ config, pkgs, modulesPath, lib, ... }:
 {
-  services.logind.extraConfig = [
-    "NAutoVTs=0"
-  ];
+  services.logind.extraConfig = ''
+    NAutoVTs=0
+  '';
   systemd.services."getty@tty2".enable = true;
   systemd.services.autoinstall = {
     description = "Automatic installation";

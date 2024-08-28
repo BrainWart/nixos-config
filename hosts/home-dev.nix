@@ -5,6 +5,8 @@
     ../tasks/tailscale.nix
   ];
 
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
   networking.hostName = "home-dev";
   # nixpkgs.config.allowUnfree = true;
   hardware.graphics.enable = true;
