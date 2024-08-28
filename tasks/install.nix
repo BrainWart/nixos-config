@@ -1,12 +1,20 @@
 ({ config, pkgs, modulesPath, lib, ... }:
 {
+  services.logind.extraConfig = [
+    "NAutoVTs=0"
+  ];
+  systemd.services."getty@tty2".enable = true;
   systemd.services.autoinstall = {
     description = "Automatic installation";
 
     after = [ "network-online.target" ];
     wants = [ "network-online.target" ];
     wantedBy = [ "multi-user.target" ];
-    requires = [ "getty@tty1.service" ];
+
+    serviceConfig = {
+      TTYPath = "/dev/tty1";
+      TTYVTDisallocate = "yes";
+    };
 
     path = [ pkgs.nix pkgs.nixos-install-tools ];
 
