@@ -4,12 +4,15 @@
     NAutoVTs=0
   '';
   systemd.services."getty@tty2".enable = true;
+  systemd.services."getty@tty1".enable = false;
   systemd.services.autoinstall = {
     description = "Automatic installation";
 
     after = [ "network-online.target" ];
     wants = [ "network-online.target" ];
     wantedBy = [ "multi-user.target" ];
+
+    conflicts = [ "getty@tty1.service" ];
 
     serviceConfig = {
       TTYPath = "/dev/tty1";
@@ -31,9 +34,15 @@
         HOSTNAME="$(${systemd}/bin/systemd-ask-password --timeout=0 "Hostname:")"
       fi
 
+      echo "Installing system for: ''${HOSTNAME}"
+      
+      echo "Building system disk"
       DISKO="$(nix build ${config.system.autoUpgrade.flake}#nixosConfigurations.''${HOSTNAME}.config.system.build.diskoScript --print-out-paths)"
-      $DISKO
-      nixos-install --flake ${config.system.autoUpgrade.flake}#$HOSTNAME --no-root-password
+      $DISKO 2>&1 >/dev/tty1
+
+      echo ""
+      echo "Installing NixOS on system"
+      nixos-install --flake ${config.system.autoUpgrade.flake}#$HOSTNAME --no-root-password 2>&1 >/dev/tty1
       reboot
     '';
   };
