@@ -15,7 +15,12 @@
     conflicts = [ "getty@tty1.service" ];
 
     serviceConfig = {
+      StandardInput = "tty";
+      StandardOutput = "tty";
+      StandardError = "tty";
       TTYPath = "/dev/tty1";
+      TTYReset = "yes";
+      TTYHangup = "yes";
       TTYVTDisallocate = "yes";
     };
 
@@ -38,11 +43,11 @@
       
       echo "Building system disk"
       DISKO="$(nix build ${config.system.autoUpgrade.flake}#nixosConfigurations.''${HOSTNAME}.config.system.build.diskoScript --print-out-paths)"
-      $DISKO 2>&1 >/dev/tty1
+      $DISKO
 
       echo ""
       echo "Installing NixOS on system"
-      nixos-install --flake ${config.system.autoUpgrade.flake}#$HOSTNAME --no-root-password 2>&1 >/dev/tty1
+      nixos-install --flake ${config.system.autoUpgrade.flake}#$HOSTNAME --no-root-password
       reboot
     '';
   };
