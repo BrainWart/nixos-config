@@ -2,7 +2,7 @@
 let
   winpeAbbIso = pkgs.requireFile {
     name = "synology_recovery_virtio_amd64-winpe.iso";
-    url = "https://github.com/BrainWart/nixos-config/blob/main/scripts/Synology Active Backup.amd64.qemu.ps1";
+    url = "https://github.com/BrainWart/nixos-config/blob/main/scripts/Synology%20Active%20Backup.amd64.qemu.ps1";
     hash = "sha256-3pUHgKjJhzGul1hk+nHy6cKonADlBkZ5mMRMb5XcPeA=";
   };
 in
