@@ -11,6 +11,15 @@
   isoImage.isoBaseName = "${config.system.nixos.distroId}-recovery";
   isoImage.appendToMenuLabel = " Recovery with Synology ABB";
   nix.extraOptions = "experimental-features = nix-command flakes repl-flake";
+
+  hardware.deviceTree.enable = pkgs.system == "aarch64-linux";
+  services.udev.extraRules = ''
+    SUBSYSTEM=="block", MODE="777"
+  '';
+  virtualisation.hypervGuest.enable = true;
+  boot = {
+    blacklistedKernelModules = [ "hyperv_fb" ];
+  };
 }
 
 
