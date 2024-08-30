@@ -6,6 +6,8 @@ param (
     [string] $PeDir = "C:\winpe"
 )
 
+$ProgressPreference = "SilentlyContinue"
+
 function DownloadFile {
     param (
         [string] $Url,
@@ -13,11 +15,14 @@ function DownloadFile {
         [string] $DestinationPath
     )
 
+    Write-Host "Downloading '$DestinationPath'"
     Invoke-WebRequest $Url -OutFile $DestinationPath
-    if ((Get-FileHash -Path $DestinationPath -Algorithm SHA256).Hash -ne $Hash) {
-        Write-Error "$Url did not match previous hash`nPrevious: $Hash"
+    $DownloadFileHash = (Get-FileHash -Path $DestinationPath -Algorithm SHA256)
+    if ($DownloadFileHash.Hash -ne $Hash) {
+        Write-Error "$Url did not match previous hash`nPrevious: $Hash`nCurrent: $($DownloadFileHash.Hash)"
         Exit
     }
+    Write-Host "Hash matched!"
 }
 
 $MountDir = "$PeDir\mount\"
@@ -54,7 +59,7 @@ DownloadFile -Url "https://global.synologydownload.com/download/Utility/ActiveBa
  -DestinationPath "Synology Recovery Tool.zip"
 
 DownloadFile -Url "https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.262-2/virtio-win-0.1.262.iso" `
- -Hash "956405ECF9CE8BF604F931217F0F29988331AC71C5F830FFE93046BB7A7FAFE7" `
+ -Hash "BDC2AD1727A08B6D8A59D40E112D930F53A2B354BDEF85903ABAAD896214F0A3" `
  -DestinationPath "virtio-win.iso"
 
 # Copy the WinPE environment to $PeDir
@@ -99,7 +104,7 @@ foreach ($CabName in $CabNames){
 }
 
 # Mount virtio drivers
-$VirtIoDisk = Mount-DiskImage virtio-win-0.1.262.iso -NoDriveLetter -PassThru
+$VirtIoDisk = Mount-DiskImage (Get-Item "virtio-win.iso").FullName -NoDriveLetter -PassThru
 Get-ChildItem $VirtIoDisk.DevicePath -Recurse -Filter "w11" | % {
     Add-WindowsDriver -Path $PeDir\mount -Driver "$($_.FullName)\" -ForceUnsigned -Recurse
 }
