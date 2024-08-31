@@ -7,6 +7,9 @@ let
   };
 in
 {
+  services.udev.extraRules = ''
+    SUBSYSTEM=="block", MODE="777"
+  '';
   services.logind.extraConfig = ''
     NAutoVTs=0
   '';
@@ -32,7 +35,7 @@ in
       User = "nixos";
     };
 
-    path = [ pkgs.qemu_full ];
+    path = [ pkgs.qemu ];
 
     script = with pkgs; ''
       DRIVE_ARGS="''$(${util-linux}/bin/lsblk \
@@ -43,7 +46,7 @@ in
       | ${coreutils-full}/bin/cut -d' ' -f 1 \
       | ${findutils}/bin/xargs -r printf '-drive format=raw,file=%s ')"
 
-      echo ${qemu_full}/bin/qemu-system-x86_64 \
+      echo ${qemu}/bin/qemu-system-x86_64 \
         -machine q35 -cpu Westmere \
         -m 4G -cdrom ${winpeAbbIso} \
         -usbdevice tablet -vga qxl \
@@ -52,7 +55,7 @@ in
         -display none -name winpe \
         -spice unix=on,addr=/tmp/vm_spice.socket,disable-ticketing=on
 
-      ${qemu_full}/bin/qemu-system-x86_64 \
+      ${qemu}/bin/qemu-system-x86_64 \
         -machine q35 -cpu Westmere \
         -m 4G -cdrom ${winpeAbbIso} \
         -usbdevice tablet -vga qxl \
