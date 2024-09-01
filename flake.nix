@@ -2,7 +2,7 @@
   description = "NixOS flake build";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:BrainWart/nixpkgs/iso-dt-selectors";
     x13s = {
       url = "github:BrainWart/x13s-nixos";
       inputs.nixpkgs.follows = "nixpkgs";

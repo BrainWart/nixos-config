@@ -116,16 +116,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1724819573,
-        "narHash": "sha256-GnR7/ibgIH1vhoy8cYdmXE6iyZqKqFxQSVkFgosBh6w=",
-        "owner": "NixOS",
+        "lastModified": 1725139709,
+        "narHash": "sha256-NiNg8WFBRUkqp4C/+n8nbN2+SclaHbUVKjG4+EfKOB4=",
+        "owner": "BrainWart",
         "repo": "nixpkgs",
-        "rev": "71e91c409d1e654808b2621f28a327acfdad8dc2",
+        "rev": "5420d12394eb497462df1c07cac8e6817b2ede1d",
         "type": "github"
       },
       "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
+        "owner": "BrainWart",
+        "ref": "iso-dt-selectors",
         "repo": "nixpkgs",
         "type": "github"
       }
