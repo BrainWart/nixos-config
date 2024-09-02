@@ -3,17 +3,14 @@ let
   dtbName = "sc8280xp-lenovo-thinkpad-x13s.dtb";
 in {
   imports = [
-#    (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
-#    (modulesPath + "/installer/cd-dvd/channel.nix")
-    (modulesPath + "/installer/cd-dvd/iso-image.nix")
-#    inputs.x13s.nixosModules.default
+   (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
+   (modulesPath + "/installer/cd-dvd/channel.nix")
     ../tasks/tailscale.nix
     ../tasks/recover-abb.nix
   ];
 
   system.stateVersion = "24.11";
 
-  nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
     (final: prev: {
       libvirt = (prev.libvirt.override (old: {
@@ -33,40 +30,36 @@ in {
     })
   ];
 
-  users.users.root.initialHashedPassword = "";
-  users.users.nixos = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "video" ];
-    initialHashedPassword = "";
-  };
-  security.polkit.enable = true;
-  security.sudo = {
-    enable = true;
-    wheelNeedsPassword = false;
-  };
-
-  services.getty.autologinUser = "nixos";
-
   system.autoUpgrade.flake = "github:brainwart/nixos-config";
   networking.hostName = "recovery";
 
   isoImage.isoBaseName = "${config.system.nixos.distroId}-recovery";
-  isoImage.isoName = "${config.isoImage.isoBaseName}-${config.system.nixos.label}-${pkgs.stdenv.hostPlatform.system}.iso";
   isoImage.appendToMenuLabel = " Recovery with Synology ABB";
-  isoImage.makeEfiBootable = true;
-  isoImage.makeUsbBootable = true;
-  isoImage.volumeID = "NIXOS";
-  isoImage.edition = "recovery";
 
-  swapDevices = [];
-  fileSystems = config.lib.isoFileSystems;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  # # include all modules in the initrd
+  # boot.initrd.availableKernelModules = builtins.concatLists (
+  #   builtins.filter
+  #     builtins.isList
+  #     (map
+  #       (builtins.match "^.*/(.*)\.ko\.xz$")
+  #       (pkgs.lib.filesystem.listFilesRecursive "${config.boot.kernelPackages.kernel}")));
+
+  boot.initrd.kernelModules = [
+    # hyperv
+    "hv_balloon" "hv_netvsc" "hv_storvsc" "hv_utils" "hv_vmbus"
+    "hyperv_keyboard"
+
+    # x13s
+    "nvme" "phy-qcom-qmp-pcie" "pcie-qcom"
+    "i2c-core" "i2c-hid" "i2c-hid-of" "i2c-qcom-geni"
+    "leds_qcom_lpg" "pwm_bl" "qrtr" "pmic_glink_altmode"
+    "gpio_sbu_mux" "phy-qcom-qmp-combo" "gpucc_sc8280xp"
+    "dispcc_sc8280xp" "phy_qcom_edp" "panel-edp" "msm"
+  ];
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
-    # initrd = {
-    #   systemd.enable = true;
-    #   systemd.emergencyAccess = true;
-    # };
     kernelParams = [
       # https://github.com/jhovold/linux/wiki/X13s
       "clk_ignore_unused"
@@ -78,7 +71,6 @@ in {
     ];
   };
 
-  hardware.enableRedistributableFirmware = true;
   hardware.deviceTree = {
     enable = pkgs.system == "aarch64-linux";
     filter = "*sc8280xp*.dtb";
