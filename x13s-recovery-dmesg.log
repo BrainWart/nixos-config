@@ -3,13 +3,13 @@
 [    0.000000] KASLR enabled
 [    0.000000] Machine model: Lenovo ThinkPad X13s
 [    0.000000] efi: EFI v2.7 by Lenovo
-[    0.000000] efi: RTPROP=0xffe89398 ACPI 2.0=0xffffd000 MEMATTR=0xfb5aa018 ESRT=0xfb5beb18 SMBIOS=0xffed1000 TPMEventLog=0xe569b018 INITRD=0xef966b18 RNG=0xffffb018 MEMRESERVE=0xef966d18 
+[    0.000000] efi: RTPROP=0xffe89398 ACPI 2.0=0xffffd000 MEMATTR=0xfb72b218 ESRT=0xfacfa518 SMBIOS=0xffed1000 TPMEventLog=0xe56bb018 INITRD=0xef966b18 RNG=0xffffb018 MEMRESERVE=0xef966d18 
 [    0.000000] random: crng init done
 [    0.000000] TPM Final Events table not present
-[    0.000000] esrt: Reserving ESRT space from 0x00000000fb5beb18 to 0x00000000fb5beba0.
-[    0.000000] Reserved memory: created CMA memory pool at 0x0000000c78000000, size 128 MiB
+[    0.000000] esrt: Reserving ESRT space from 0x00000000facfa518 to 0x00000000facfa5a0.
+[    0.000000] Reserved memory: created CMA memory pool at 0x0000000c3e600000, size 128 MiB
 [    0.000000] OF: reserved mem: initialized node linux,cma, compatible id shared-dma-pool
-[    0.000000] OF: reserved mem: 0x0000000c78000000..0x0000000c7fffffff (131072 KiB) map reusable linux,cma
+[    0.000000] OF: reserved mem: 0x0000000c3e600000..0x0000000c465fffff (131072 KiB) map reusable linux,cma
 [    0.000000] OF: reserved mem: 0x0000000080000000..0x000000008085ffff (8576 KiB) nomap non-reusable reserved-region@80000000
 [    0.000000] OF: reserved mem: 0x0000000080860000..0x000000008087ffff (128 KiB) nomap non-reusable cmd-db-region@80860000
 [    0.000000] OF: reserved mem: 0x0000000080880000..0x00000000808fffff (512 KiB) nomap non-reusable reserved-region@80880000
@@ -25,7 +25,7 @@
 [    0.000000] OF: reserved mem: 0x00000000aeb00000..0x00000000c50fffff (366592 KiB) nomap non-reusable reserved-region@aeb00000
 [    0.000000] NUMA: No NUMA configuration found
 [    0.000000] NUMA: Faking a node at [mem 0x0000000080600000-0x0000000c7fffffff]
-[    0.000000] NUMA: NODE_DATA [mem 0xc73e688c0-0xc73e6bfff]
+[    0.000000] NUMA: NODE_DATA [mem 0xc7be688c0-0xc7be6bfff]
 [    0.000000] Zone ranges:
 [    0.000000]   DMA      [mem 0x0000000080600000-0x00000000ffffffff]
 [    0.000000]   DMA32    empty
@@ -80,7 +80,7 @@
 [    0.000000] CPU features: detected: Kernel page table isolation (KPTI)
 [    0.000000] CPU features: detected: SSBS not fully self-synchronizing
 [    0.000000] alternatives: applying boot alternatives
-[    0.000000] Kernel command line: BOOT_IMAGE=/boot/Image init=/nix/store/wmfh8sp28f61rf2cmdwlm3lqhgy4k3yr-nixos-system-recovery-24.11.20240901.1b78dfd/init root=LABEL=NIXOS-MINIM boot.shell_on_fail clk_ignore_unused pd_ignore_unused arm64.nopauth loglevel=4
+[    0.000000] Kernel command line: BOOT_IMAGE=/boot/Image init=/nix/store/w7q1568dz88jzw9r5ylrp58y7f418ybs-nixos-system-recovery-24.11.20240908.deef73b/init root=LABEL=NIXOS-MINIM boot.shell_on_fail clk_ignore_unused pd_ignore_unused arm64.nopauth loglevel=4
 [    0.000000] Unknown kernel command line parameters "BOOT_IMAGE=/boot/Image", will be passed to user space.
 [    0.000000] Dentry cache hash table entries: 4194304 (order: 13, 33554432 bytes, linear)
 [    0.000000] Inode-cache hash table entries: 2097152 (order: 12, 16777216 bytes, linear)
@@ -89,9 +89,9 @@
 [    0.000000] Policy zone: Normal
 [    0.000000] mem auto-init: stack:all(zero), heap alloc:on, heap free:off
 [    0.000000] software IO TLB: area num 8.
-[    0.000000] software IO TLB: mapped [mem 0x00000000f75aa000-0x00000000fb5aa000] (64MB)
+[    0.000000] software IO TLB: mapped [mem 0x00000000f6cfa000-0x00000000facfa000] (64MB)
 [    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=8, Nodes=1
-[    0.000000] ftrace: allocating 74555 entries in 292 pages
+[    0.000000] ftrace: allocating 74509 entries in 292 pages
 [    0.000000] ftrace: allocated 292 pages with 3 groups
 [    0.000000] trace event string verifier disabled
 [    0.000000] rcu: Hierarchical RCU implementation.
@@ -114,525 +114,522 @@
 [    0.000000] ITS@0x0000000017a40000: allocated 8192 Devices @1002e0000 (indirect, esz 8, psz 64K, shr 1)
 [    0.000000] ITS@0x0000000017a40000: allocated 32768 Interrupt Collections @1002f0000 (flat, esz 2, psz 64K, shr 1)
 [    0.000000] GICv3: using LPI property table @0x0000000100300000
-[    0.000000] GICv3: CPU0: using allocated LPI pending table @0x0000000100320000
+[    0.000000] GICv3: CPU0: using allocated LPI pending table @0x0000000100310000
 [    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
 [    0.000000] arch_timer: cp15 and mmio timer(s) running at 19.20MHz (virt/virt).
 [    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x46d987e47, max_idle_ns: 440795202767 ns
 [    0.000000] sched_clock: 56 bits at 19MHz, resolution 52ns, wraps every 4398046511078ns
-[    0.000380] kfence: initialized - using 2097152 bytes for 255 objects at 0x(____ptrval____)-0x(____ptrval____)
-[    0.000452] Console: colour dummy device 80x25
-[    0.000456] printk: legacy console [tty0] enabled
-[    0.000523] Calibrating delay loop (skipped), value calculated using timer frequency.. 38.40 BogoMIPS (lpj=76800)
-[    0.000527] pid_max: default: 32768 minimum: 301
-[    0.000599] LSM: initializing lsm=capability,landlock,yama,bpf
-[    0.000644] landlock: Up and running.
-[    0.000646] Yama: becoming mindful.
-[    0.000654] LSM support for eBPF active
-[    0.000723] Mount-cache hash table entries: 65536 (order: 7, 524288 bytes, linear)
-[    0.000755] Mountpoint-cache hash table entries: 65536 (order: 7, 524288 bytes, linear)
-[    0.001643] rcu: Hierarchical SRCU implementation.
-[    0.001647] rcu: 	Max phase no-delay instances is 1000.
-[    0.001692] Timer migration: 1 hierarchy levels; 8 children per group; 1 crossnode level
-[    0.002118] fsl-mc MSI: msi-controller@17a40000 domain created
-[    0.003817] Remapping and enabling EFI services.
-[    0.004250] smp: Bringing up secondary CPUs ...
-[    0.004729] Detected PIPT I-cache on CPU1
-[    0.004767] GICv3: CPU1: found redistributor 100 region 0:0x0000000017a80000
-[    0.004777] GICv3: CPU1: using allocated LPI pending table @0x0000000100330000
-[    0.004802] CPU1: Booted secondary processor 0x0000000100 [0x410fd4b0]
-[    0.005364] Detected PIPT I-cache on CPU2
-[    0.005398] GICv3: CPU2: found redistributor 200 region 0:0x0000000017aa0000
-[    0.005407] GICv3: CPU2: using allocated LPI pending table @0x0000000100340000
-[    0.005430] CPU2: Booted secondary processor 0x0000000200 [0x410fd4b0]
-[    0.005989] Detected PIPT I-cache on CPU3
-[    0.006021] GICv3: CPU3: found redistributor 300 region 0:0x0000000017ac0000
-[    0.006030] GICv3: CPU3: using allocated LPI pending table @0x0000000100350000
-[    0.006052] CPU3: Booted secondary processor 0x0000000300 [0x410fd4b0]
-[    0.008609] Detected PIPT I-cache on CPU4
-[    0.008650] GICv3: CPU4: found redistributor 400 region 0:0x0000000017ae0000
-[    0.008662] GICv3: CPU4: using allocated LPI pending table @0x0000000100360000
-[    0.008691] CPU4: Booted secondary processor 0x0000000400 [0x410fd4c0]
-[    0.009367] Detected PIPT I-cache on CPU5
-[    0.009418] GICv3: CPU5: found redistributor 500 region 0:0x0000000017b00000
-[    0.009430] GICv3: CPU5: using allocated LPI pending table @0x0000000100370000
-[    0.009456] CPU5: Booted secondary processor 0x0000000500 [0x410fd4c0]
-[    0.010128] Detected PIPT I-cache on CPU6
-[    0.010177] GICv3: CPU6: found redistributor 600 region 0:0x0000000017b20000
-[    0.010188] GICv3: CPU6: using allocated LPI pending table @0x0000000100380000
-[    0.010215] CPU6: Booted secondary processor 0x0000000600 [0x410fd4c0]
-[    0.010914] Detected PIPT I-cache on CPU7
-[    0.010964] GICv3: CPU7: found redistributor 700 region 0:0x0000000017b40000
-[    0.010976] GICv3: CPU7: using allocated LPI pending table @0x0000000100390000
-[    0.011007] CPU7: Booted secondary processor 0x0000000700 [0x410fd4c0]
-[    0.011110] smp: Brought up 1 node, 8 CPUs
-[    0.011127] SMP: Total of 8 processors activated.
-[    0.011128] CPU: All CPU(s) started at EL1
-[    0.011136] CPU features: detected: 32-bit EL0 Support
-[    0.011138] CPU features: detected: Data cache clean to the PoU not required for I/D coherence
-[    0.011139] CPU features: detected: Common not Private translations
-[    0.011141] CPU features: detected: CRC32 instructions
-[    0.011144] CPU features: detected: RCpc load-acquire (LDAPR)
-[    0.011145] CPU features: detected: LSE atomic instructions
-[    0.011146] CPU features: detected: Privileged Access Never
-[    0.011148] CPU features: detected: RAS Extension Support
-[    0.011150] CPU features: detected: Speculative Store Bypassing Safe (SSBS)
-[    0.011213] alternatives: applying system-wide alternatives
-[    0.015189] CPU features: detected: Hardware dirty bit management on CPU0-7
-[    0.015360] Memory: 31949744K/33249508K available (25216K kernel code, 6824K rwdata, 24476K rodata, 17728K init, 1013K bss, 1156456K reserved, 131072K cma-reserved)
-[    0.015757] devtmpfs: initialized
-[    0.024388] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
-[    0.024404] futex hash table entries: 2048 (order: 5, 131072 bytes, linear)
-[    0.024910] 2G module region forced by RANDOMIZE_MODULE_REGION_FULL
-[    0.024912] 0 pages in range for non-PLT usage
-[    0.024914] 505408 pages in range for PLT usage
-[    0.025005] pinctrl core: initialized pinctrl subsystem
-[    0.026071] SMBIOS 3.3 present.
-[    0.026078] DMI: LENOVO 21BXCTO1WW/21BXCTO1WW, BIOS N3HET88W (1.60 ) 03/14/2024
-[    0.026114] DMI: Memory slots populated: 1/1
-[    0.027337] NET: Registered PF_NETLINK/PF_ROUTE protocol family
-[    0.028173] DMA: preallocated 4096 KiB GFP_KERNEL pool for atomic allocations
-[    0.028577] DMA: preallocated 4096 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
-[    0.028970] DMA: preallocated 4096 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
-[    0.028989] audit: initializing netlink subsys (disabled)
-[    0.029086] audit: type=2000 audit(0.024:1): state=initialized audit_enabled=0 res=1
-[    0.029730] thermal_sys: Registered thermal governor 'step_wise'
-[    0.029733] thermal_sys: Registered thermal governor 'power_allocator'
-[    0.029768] cpuidle: using governor ladder
-[    0.029780] cpuidle: using governor menu
-[    0.029883] hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
-[    0.029966] ASID allocator initialised with 32768 entries
-[    0.030836] Serial: AMBA PL011 UART driver
-[    0.032780] CPUidle PSCI: Initialized CPU PM domain topology using OSI mode
-[    0.041495] platform 88eb000.phy: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/displayport-controller@ae90000
-[    0.041506] platform 88eb000.phy: Fixed dependency cycle(s) with /soc@0/usb@a6f8800/usb@a600000
-[    0.041792] platform 8903000.phy: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/displayport-controller@ae98000
-[    0.041800] platform 8903000.phy: Fixed dependency cycle(s) with /soc@0/usb@a8f8800/usb@a800000
-[    0.043101] platform ac5a000.camss: Fixed dependency cycle(s) with /soc@0/cci@ac4c000/i2c-bus@1/camera@10
-[    0.043433] platform ae00000.display-subsystem: Fixed dependency cycle(s) with /soc@0/clock-controller@af00000
-[    0.043631] platform aec5a00.phy: Fixed dependency cycle(s) with /soc@0/clock-controller@af00000
-[    0.043751] platform aec5a00.phy: Fixed dependency cycle(s) with /soc@0/clock-controller@af00000
-[    0.043814] platform ae00000.display-subsystem: Fixed dependency cycle(s) with /soc@0/clock-controller@af00000
-[    0.043819] platform af00000.clock-controller: Fixed dependency cycle(s) with /soc@0/phy@aec5a00
-[    0.043857] platform af00000.clock-controller: Fixed dependency cycle(s) with /soc@0/phy@8903000
-[    0.043894] platform af00000.clock-controller: Fixed dependency cycle(s) with /soc@0/phy@88eb000
-[    0.047725] platform 18200000.rsc:regulators-0: Fixed dependency cycle(s) with /soc@0/rsc@18200000/regulators-0/smps11
-[    0.047734] platform 18200000.rsc:regulators-0: Fixed dependency cycle(s) with /soc@0/rsc@18200000/regulators-0/smps12
-[    0.047817] platform 18200000.rsc:regulators-1: Fixed dependency cycle(s) with /soc@0/rsc@18200000/regulators-0/smps11
-[    0.047822] platform 18200000.rsc:regulators-1: Fixed dependency cycle(s) with /soc@0/rsc@18200000/regulators-1/bob
-[    0.047826] platform 18200000.rsc:regulators-1: Fixed dependency cycle(s) with /soc@0/rsc@18200000/regulators-1/smps1
-[    0.050215] platform usb0-sbu-mux: Fixed dependency cycle(s) with /pmic-glink/connector@0
-[    0.050699] platform usb1-sbu-mux: Fixed dependency cycle(s) with /pmic-glink/connector@1
-[    0.051141] HugeTLB: registered 1.00 GiB page size, pre-allocated 0 pages
-[    0.051145] HugeTLB: 0 KiB vmemmap can be freed for a 1.00 GiB page
-[    0.051148] HugeTLB: registered 32.0 MiB page size, pre-allocated 0 pages
-[    0.051149] HugeTLB: 0 KiB vmemmap can be freed for a 32.0 MiB page
-[    0.051151] HugeTLB: registered 2.00 MiB page size, pre-allocated 0 pages
-[    0.051152] HugeTLB: 0 KiB vmemmap can be freed for a 2.00 MiB page
-[    0.051153] HugeTLB: registered 64.0 KiB page size, pre-allocated 0 pages
-[    0.051154] HugeTLB: 0 KiB vmemmap can be freed for a 64.0 KiB page
-[    0.051862] ACPI: Interpreter disabled.
-[    0.059088] iommu: Default domain type: Translated
-[    0.059091] iommu: DMA domain TLB invalidation policy: strict mode
-[    0.063443] SCSI subsystem initialized
-[    0.063492] libata version 3.00 loaded.
-[    0.063553] usbcore: registered new interface driver usbfs
-[    0.063562] usbcore: registered new interface driver hub
-[    0.063570] usbcore: registered new device driver usb
-[    0.063962] pps_core: LinuxPPS API ver. 1 registered
-[    0.063964] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
-[    0.063968] PTP clock support registered
-[    0.066081] EDAC MC: Ver: 3.0.0
-[    0.066292] scmi_core: SCMI protocol bus registered
-[    0.066690] FPGA manager framework
-[    0.066741] Advanced Linux Sound Architecture Driver Initialized.
-[    0.067104] vgaarb: loaded
-[    0.067649] clocksource: Switched to clocksource arch_sys_counter
-[    0.067825] VFS: Disk quotas dquot_6.6.0
-[    0.067841] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
-[    0.067906] netfs: FS-Cache loaded
-[    0.067958] pnp: PnP ACPI: disabled
-[    0.070438] NET: Registered PF_INET protocol family
-[    0.070579] IP idents hash table entries: 262144 (order: 9, 2097152 bytes, linear)
-[    0.098512] tcp_listen_portaddr_hash hash table entries: 16384 (order: 6, 262144 bytes, linear)
-[    0.098566] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
-[    0.098684] TCP established hash table entries: 262144 (order: 9, 2097152 bytes, linear)
-[    0.099055] TCP bind hash table entries: 65536 (order: 9, 2097152 bytes, linear)
-[    0.100129] TCP: Hash tables configured (established 262144 bind 65536)
-[    0.100286] MPTCP token hash table entries: 32768 (order: 7, 786432 bytes, linear)
-[    0.100386] UDP hash table entries: 16384 (order: 7, 524288 bytes, linear)
-[    0.100482] UDP-Lite hash table entries: 16384 (order: 7, 524288 bytes, linear)
-[    0.100598] NET: Registered PF_UNIX/PF_LOCAL protocol family
-[    0.100985] RPC: Registered named UNIX socket transport module.
-[    0.100990] RPC: Registered udp transport module.
-[    0.100992] RPC: Registered tcp transport module.
-[    0.100994] RPC: Registered tcp-with-tls transport module.
-[    0.100996] RPC: Registered tcp NFSv4.1 backchannel transport module.
-[    0.101002] NET: Registered PF_XDP protocol family
-[    0.101013] PCI: CLS 0 bytes, default 64
-[    0.101147] Trying to unpack rootfs image as initramfs...
-[    0.111679] kvm [1]: HYP mode not available
-[    0.112381] Initialise system trusted keyrings
-[    0.112458] workingset: timestamp_bits=42 max_order=23 bucket_order=0
-[    0.112871] squashfs: version 4.0 (2009/01/31) Phillip Lougher
-[    0.113022] NFS: Registering the id_resolver key type
-[    0.113035] Key type id_resolver registered
-[    0.113038] Key type id_legacy registered
-[    0.113048] nfs4filelayout_init: NFSv4 File Layout Driver Registering...
-[    0.113052] nfs4flexfilelayout_init: NFSv4 Flexfile Layout Driver Registering...
-[    0.113102] 9p: Installing v9fs 9p2000 file system support
-[    0.138984] Key type asymmetric registered
-[    0.138988] Asymmetric key parser 'x509' registered
-[    0.139034] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 244)
-[    0.139101] io scheduler mq-deadline registered
-[    0.139104] io scheduler kyber registered
-[    0.181494] vreg_s1c: Setting 1880000-1900000uV
-[    0.181516] vreg_s10b: Setting 1800000-1800000uV
-[    0.181734] vreg_l1c: Setting 1800000-1800000uV
-[    0.181752] vreg_s11b: Setting 1272000-1272000uV
-[    0.181825] vreg_l8c: Setting 1800000-1800000uV
-[    0.181948] vreg_l12c: Setting 1800000-1800000uV
-[    0.181964] vreg_s12b: Setting 984000-984000uV
-[    0.182048] vreg_l13c: Setting 3072000-3072000uV
-[    0.182115] vreg_l1b: Setting 912000-912000uV
-[    0.182151] vreg_bob: Setting 3008000-3960000uV
-[    0.182217] vreg_l3b: Setting 1200000-1200000uV
-[    0.182334] vreg_l4b: Setting 912000-912000uV
-[    0.182482] vreg_l6b: Setting 880000-880000uV
-[    0.183861] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
-[    0.185556] msm_serial: driver initialized
-[    0.185796] SuperH (H)SCI(F) driver initialized
-[    0.185925] STM32 USART driver initialized
-[    0.193033] loop: module loaded
-[    0.193600] megasas: 07.727.03.00-rc1
-[    0.195992] spmi_pmic_arb c440000.spmi: PMIC arbiter version v5 (0x50020000)
-[    0.204040] tun: Universal TUN/TAP device driver, 1.6
-[    0.204715] thunder_xcv, ver 1.0
-[    0.204731] thunder_bgx, ver 1.0
-[    0.204743] nicpf, ver 1.0
-[    0.205536] hns3: Hisilicon Ethernet Network Driver for Hip08 Family - version
-[    0.205540] hns3: Copyright (c) 2017 Huawei Corporation.
-[    0.205553] hclge is initializing
-[    0.205585] e1000: Intel(R) PRO/1000 Network Driver
-[    0.205588] e1000: Copyright (c) 1999-2006 Intel Corporation.
-[    0.205601] e1000e: Intel(R) PRO/1000 Network Driver
-[    0.205603] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
-[    0.205613] igb: Intel(R) Gigabit Ethernet Network Driver
-[    0.205615] igb: Copyright (c) 2007-2014 Intel Corporation.
-[    0.205624] igbvf: Intel(R) Gigabit Virtual Function Network Driver
-[    0.205626] igbvf: Copyright (c) 2009 - 2012 Intel Corporation.
-[    0.205824] sky2: driver version 1.30
-[    0.208414] usbcore: registered new interface driver usb-storage
-[    0.208467] usbcore: registered new interface driver usbserial_generic
-[    0.208477] usbserial: USB Serial support registered for generic
-[    0.213901] i2c_dev: i2c /dev entries driver
-[    0.224699] sdhci: Secure Digital Host Controller Interface driver
-[    0.224704] sdhci: Copyright(c) Pierre Ossman
-[    0.225228] Synopsys Designware Multimedia Card Interface Driver
-[    0.225883] sdhci-pltfm: SDHCI platform and OF driver helper
-[    0.227493] ledtrig-cpu: registered to indicate activity on CPUs
-[    0.228114] efifb: probing for efifb
-[    0.228153] efifb: framebuffer at 0xc6200000, using 9000k, total 9000k
-[    0.228156] efifb: mode is 1920x1200x32, linelength=7680, pages=1
-[    0.228159] efifb: scrolling: redraw
-[    0.228161] efifb: Truecolor: size=8:8:8:8, shift=24:16:8:0
-[    0.228858] fbcon: Deferring console take-over
-[    0.228860] fb0: EFI VGA frame buffer device
-[    0.244987] hid: raw HID events driver (C) Jiri Kosina
-[    0.245168] usbcore: registered new interface driver usbhid
-[    0.245171] usbhid: USB HID core driver
-[    0.251535] hw perfevents: enabled with armv8_pmuv3 PMU driver, 7 counters available
-[    0.257208] drop_monitor: Initializing network drop monitor service
-[    0.257470] NET: Registered PF_INET6 protocol family
-[    0.395288] Freeing initrd memory: 24088K
-[    0.397142] Segment Routing with IPv6
-[    0.397160] In-situ OAM (IOAM) with IPv6
-[    0.397202] NET: Registered PF_PACKET protocol family
-[    0.397298] 9pnet: Installing 9P2000 support
-[    0.397351] Key type dns_resolver registered
-[    0.403343] registered taskstats version 1
-[    0.403547] Loading compiled-in X.509 certificates
-[    0.412805] Demotion targets for Node 0: null
-[    0.412942] Key type .fscrypt registered
-[    0.412944] Key type fscrypt-provisioning registered
-[    0.434317] qcom_scm: convention: smc arm 64
-[    0.435075] qcom_scm firmware:scm: qseecom: found qseecom with version 0x1402000
-[    0.435424] qcom_qseecom qcom_qseecom: setting up client for qcom.tz.uefisecapp
-[    0.435480] efivars: Registered efivars operations
-[    0.441612] vreg_l2d: Setting 3072000-3072000uV
-[    0.441733] vreg_l3d: Setting 1200000-1200000uV
-[    0.441861] vreg_l4d: Setting 1200000-1200000uV
-[    0.441967] vreg_l6d: Setting 880000-880000uV
-[    0.442047] vreg_l7d: Setting 3072000-3072000uV
-[    0.442061] arm-smmu 3da0000.iommu: probing hardware configuration...
-[    0.442067] arm-smmu 3da0000.iommu: SMMUv2 with:
-[    0.442088] arm-smmu 3da0000.iommu: 	stage 1 translation
-[    0.442091] arm-smmu 3da0000.iommu: 	coherent table walk
-[    0.442094] arm-smmu 3da0000.iommu: 	stream matching with 9 register groups
-[    0.442110] arm-smmu 3da0000.iommu: 	7 context banks (0 stage-2 only)
-[    0.442129] arm-smmu 3da0000.iommu: 	Supported page sizes: 0x61311000
-[    0.442132] arm-smmu 3da0000.iommu: 	Stage-1: 48-bit VA -> 36-bit IPA
-[    0.442133] vreg_l8d: Setting 912000-912000uV
-[    0.442216] vreg_l9d: Setting 912000-912000uV
-[    0.442262] arm-smmu 3da0000.iommu: 	preserved 0 boot mappings
-[    0.442298] vreg_l10d: Setting 912000-912000uV
-[    0.445848] arm-smmu 15000000.iommu: probing hardware configuration...
-[    0.445852] arm-smmu 15000000.iommu: SMMUv2 with:
-[    0.445859] arm-smmu 15000000.iommu: 	stage 1 translation
-[    0.445861] arm-smmu 15000000.iommu: 	non-coherent table walk
-[    0.445865] arm-smmu 15000000.iommu: 	(IDR0.CTTW overridden by FW configuration)
-[    0.445874] arm-smmu 15000000.iommu: 	stream matching with 162 register groups
-[    0.445880] arm-smmu 15000000.iommu: 	110 context banks (0 stage-2 only)
-[    0.445891] arm-smmu 15000000.iommu: 	Limiting the stream matching groups to 128
-[    0.446287] arm-smmu 15000000.iommu: 	Supported page sizes: 0x61311000
-[    0.446291] arm-smmu 15000000.iommu: 	Stage-1: 36-bit VA -> 36-bit IPA
-[    0.446375] arm-smmu 15000000.iommu: 	preserved 0 boot mappings
-[    0.460084] platform 88eb000.phy: Fixed dependency cycle(s) with /soc@0/usb@a6f8800/usb@a600000
-[    0.460157] platform a600000.usb: Fixed dependency cycle(s) with /pmic-glink/connector@0
-[    0.460174] platform a600000.usb: Fixed dependency cycle(s) with /soc@0/phy@88eb000
-[    0.462662] platform 8903000.phy: Fixed dependency cycle(s) with /soc@0/usb@a8f8800/usb@a800000
-[    0.462723] platform a800000.usb: Fixed dependency cycle(s) with /pmic-glink/connector@1
-[    0.462739] platform a800000.usb: Fixed dependency cycle(s) with /soc@0/phy@8903000
-[    0.467911] geni_se_qup 8c0000.geniqup: Adding to iommu group 0
-[    0.469171] geni_se_qup 9c0000.geniqup: Adding to iommu group 1
-[    0.470199] 988000.serial: ttyHS1 at MMIO 0x988000 (irq = 192, base_baud = 0) is a MSM
-[    0.471465] serial serial0: tty port ttyHS1 registered
-[    0.472324] geni_se_qup ac0000.geniqup: Adding to iommu group 2
-[    0.481239] input: gpio-keys as /devices/platform/gpio-keys/input/input0
-[    0.507347] clk: Not disabling unused clocks
-[    0.507352] PM: genpd: Not disabling unused power domains
-[    0.507360] ALSA device list:
-[    0.507362]   No soundcards found.
-[    0.511261] Freeing unused kernel memory: 17728K
-[    0.511319] Run /init as init process
-[    0.511320]   with arguments:
-[    0.511322]     /init
-[    0.511323]   with environment:
-[    0.511324]     HOME=/
-[    0.511325]     TERM=linux
-[    0.511326]     BOOT_IMAGE=/boot/Image
-[    0.515046] fbcon: Taking over console
-[    0.515146] Console: switching to colour frame buffer device 240x75
-[    0.542748] stage-1-init: [Thu Jan  1 00:00:00 UTC 1970] loading module loop...
-[    0.545353] stage-1-init: [Thu Jan  1 00:00:00 UTC 1970] loading module overlay...
-[    0.558644] stage-1-init: [Thu Jan  1 00:00:00 UTC 1970] loading module qnoc-sc8280xp...
-[    0.560430] stage-1-init: [Thu Jan  1 00:00:00 UTC 1970] loading module phy_qcom_qmp_pcie...
-[    0.568875] stage-1-init: [Thu Jan  1 00:00:00 UTC 1970] loading module nvme...
-[    0.569051] qcom-pcie 1c20000.pcie: supply vdda not found, using dummy regulator
-[    0.569210] qcom-pcie 1c20000.pcie: host bridge /soc@0/pcie@1c20000 ranges:
-[    0.569221] qcom-pcie 1c20000.pcie:       IO 0x003c200000..0x003c2fffff -> 0x0000000000
-[    0.569232] qcom-pcie 1c20000.pcie:      MEM 0x003c300000..0x003dffffff -> 0x003c300000
-[    0.686660] qcom-pcie 1c20000.pcie: iATU: unroll T, 8 ob, 8 ib, align 4K, limit 1024G
-[    0.785056] qcom-pcie 1c20000.pcie: PCIe Gen.3 x4 link up
-[    0.785744] qcom-pcie 1c20000.pcie: PCI host bridge to bus 0002:00
-[    0.785772] pci_bus 0002:00: root bus resource [bus 00-ff]
-[    0.785797] pci_bus 0002:00: root bus resource [io  0x0000-0xfffff]
-[    0.785809] pci_bus 0002:00: root bus resource [mem 0x3c300000-0x3dffffff]
-[    0.785937] pci 0002:00:00.0: [17cb:010e] type 01 class 0x060400 PCIe Root Port
-[    0.785969] pci 0002:00:00.0: BAR 0 [mem 0x00000000-0x00000fff]
-[    0.785990] pci 0002:00:00.0: PCI bridge to [bus 01-ff]
-[    0.786005] pci 0002:00:00.0:   bridge window [io  0x0000-0x0fff]
-[    0.786016] pci 0002:00:00.0:   bridge window [mem 0x00000000-0x000fffff]
-[    0.786030] pci 0002:00:00.0:   bridge window [mem 0x00000000-0x000fffff 64bit pref]
-[    0.786126] pci 0002:00:00.0: PME# supported from D0 D3hot D3cold
-[    0.793020] pci 0002:01:00.0: [144d:a80b] type 00 class 0x010802 PCIe Endpoint
-[    0.793171] pci 0002:01:00.0: BAR 0 [mem 0x00000000-0x00003fff 64bit]
-[    0.794225] pci 0002:01:00.0: PME# supported from D0 D3hot
-[    0.794794] pci 0002:01:00.0: 31.504 Gb/s available PCIe bandwidth, limited by 8.0 GT/s PCIe x4 link at 0002:00:00.0 (capable of 63.012 Gb/s with 16.0 GT/s PCIe x4 link)
-[    0.804609] pci 0002:00:00.0: bridge window [mem 0x3c300000-0x3c3fffff]: assigned
-[    0.804648] pci 0002:00:00.0: BAR 0 [mem 0x3c400000-0x3c400fff]: assigned
-[    0.804675] pci 0002:01:00.0: BAR 0 [mem 0x3c300000-0x3c303fff 64bit]: assigned
-[    0.804750] pci 0002:00:00.0: PCI bridge to [bus 01-ff]
-[    0.804766] pci 0002:00:00.0:   bridge window [mem 0x3c300000-0x3c3fffff]
-[    0.804784] pci_bus 0002:00: resource 4 [io  0x0000-0xfffff]
-[    0.804798] pci_bus 0002:00: resource 5 [mem 0x3c300000-0x3dffffff]
-[    0.804809] pci_bus 0002:01: resource 1 [mem 0x3c300000-0x3c3fffff]
-[    0.808232] pcieport 0002:00:00.0: PME: Signaling with IRQ 195
-[    0.809902] pcieport 0002:00:00.0: AER: enabled with IRQ 195
-[    0.830408] nvme nvme0: pci function 0002:01:00.0
-[    0.831126] nvme 0002:01:00.0: enabling device (0000 -> 0002)
-[    0.836241] nvme nvme0: D3 entry latency set to 8 seconds
-[    0.878824] hwmon hwmon11: temp1_input not attached to any thermal zone
-[    0.878917] hwmon hwmon11: temp2_input not attached to any thermal zone
-[    0.878987] hwmon hwmon11: temp3_input not attached to any thermal zone
-[    0.923760] nvme nvme0: allocated 64 MiB host memory buffer.
-[    0.961583] nvme nvme0: 8/0/0 default/read/poll queues
-[    0.982279] nvme nvme0: Ignoring bogus Namespace Identifiers
-[    1.001696]  nvme0n1: p1 p2 p3 p4
-[    1.012312] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module i2c_qcom_geni...
-[    1.019636] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module i2c_hid_of...
-[    1.026995] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module hid_generic...
-[    1.029309] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module pwm_bl...
-[    1.038735] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module qrtr...
-[    1.042724] NET: Registered PF_QIPCRTR protocol family
-[    1.045040] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module phy_qcom_edp...
-[    1.051951] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module i2c_qcom_geni...
-[    1.054861] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module gpio_sbu_mux...
-[    1.060493] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module pmic_glink_altmode...
-[    1.067368] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module spmi_pmic_arb...
-[    1.069552] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module phy_qcom_qmp_combo...
-[    1.072804] qcom_pmic_glink pmic-glink: Failed to create device link (0x180) with 88eb000.phy
-[    1.073667] qcom_pmic_glink pmic-glink: Failed to create device link (0x180) with 8903000.phy
-[    1.076552] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module qcom_spmi_pmic...
-[    1.078933] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module msm...
-[    1.155404] adreno 3d00000.gpu: Adding to iommu group 3
-[    1.156321] msm-mdss ae00000.display-subsystem: Adding to iommu group 4
-[    1.184324] platform ae01000.display-controller: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/displayport-controller@aea0000
-[    1.184336] platform ae01000.display-controller: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/displayport-controller@ae98000
-[    1.184344] platform ae01000.display-controller: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/displayport-controller@ae90000
-[    1.187822] platform aea0000.displayport-controller: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/displayport-controller@aea0000/aux-bus/panel
-[    1.256719] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module pinctrl_spmi_gpio...
-[    1.265560] qcom-pcie 1c00000.pcie: supply vdda not found, using dummy regulator
-[    1.265784] qcom-pcie 1c00000.pcie: host bridge /soc@0/pcie@1c00000 ranges:
-[    1.265840] qcom-pcie 1c00000.pcie:       IO 0x0030200000..0x00302fffff -> 0x0000000000
-[    1.265850] qcom-pcie 1c00000.pcie:      MEM 0x0030300000..0x0031ffffff -> 0x0030300000
-[    1.265996] qcom-pcie 1c10000.pcie: supply vdda not found, using dummy regulator
-[    1.266117] qcom-pcie 1c10000.pcie: host bridge /soc@0/pcie@1c10000 ranges:
-[    1.266135] qcom-pcie 1c10000.pcie:       IO 0x0034200000..0x00342fffff -> 0x0000000000
-[    1.266144] qcom-pcie 1c10000.pcie:      MEM 0x0034300000..0x0035ffffff -> 0x0034300000
-[    1.357974] input: hid-over-i2c 04F3:000D Keyboard as /devices/platform/soc@0/8c0000.geniqup/894000.i2c/i2c-21/21-0068/0018:04F3:000D.0001/input/input1
-[    1.381584] qcom-pcie 1c00000.pcie: iATU: unroll T, 8 ob, 8 ib, align 4K, limit 1024G
-[    1.381948] qcom-pcie 1c10000.pcie: iATU: unroll T, 8 ob, 8 ib, align 4K, limit 1024G
-[    1.433085] input: hid-over-i2c 06CB:CE5C Mouse as /devices/platform/soc@0/8c0000.geniqup/894000.i2c/i2c-21/21-002c/0018:06CB:CE5C.0002/input/input3
-[    1.452641] input: hid-over-i2c 04F3:000D Mouse as /devices/platform/soc@0/8c0000.geniqup/894000.i2c/i2c-21/21-0068/0018:04F3:000D.0001/input/input2
-[    1.454847] hid-generic 0018:04F3:000D.0001: input,hidraw0: I2C HID v1.00 Keyboard [hid-over-i2c 04F3:000D] on 21-0068
-[    1.456312] input: hid-over-i2c 06CB:CE5C Touchpad as /devices/platform/soc@0/8c0000.geniqup/894000.i2c/i2c-21/21-002c/0018:06CB:CE5C.0002/input/input4
-[    1.459424] hid-generic 0018:06CB:CE5C.0002: input,hidraw1: I2C HID v1.00 Mouse [hid-over-i2c 06CB:CE5C] on 21-002c
-[    1.483928] qcom-pcie 1c10000.pcie: PCIe Gen.3 x2 link up
-[    1.483945] qcom-pcie 1c00000.pcie: PCIe Gen.2 x1 link up
-[    1.484052] qcom-pcie 1c10000.pcie: PCI host bridge to bus 0004:00
-[    1.484063] pci_bus 0004:00: root bus resource [bus 00-ff]
-[    1.484071] pci_bus 0004:00: root bus resource [io  0x200000-0x2fffff] (bus address [0x0000-0xfffff])
-[    1.484077] pci_bus 0004:00: root bus resource [mem 0x34300000-0x35ffffff]
-[    1.484143] pci 0004:00:00.0: [17cb:010e] type 01 class 0x060400 PCIe Root Port
-[    1.484159] pci 0004:00:00.0: BAR 0 [mem 0x00000000-0x00000fff]
-[    1.484170] pci 0004:00:00.0: PCI bridge to [bus 01-ff]
-[    1.484177] pci 0004:00:00.0:   bridge window [io  0x200000-0x200fff]
-[    1.484184] pci 0004:00:00.0:   bridge window [mem 0x00000000-0x000fffff]
-[    1.484191] pci 0004:00:00.0:   bridge window [mem 0x00000000-0x000fffff 64bit pref]
-[    1.484249] pci 0004:00:00.0: PME# supported from D0 D3hot D3cold
-[    1.486736] pci 0004:01:00.0: [105b:e0c3] type 00 class 0x0d4000 PCIe Endpoint
-[    1.486825] pci 0004:01:00.0: BAR 0 [mem 0x00000000-0x00000fff 64bit]
-[    1.486882] pci 0004:01:00.0: BAR 2 [mem 0x00000000-0x00000fff 64bit]
-[    1.487484] pci 0004:01:00.0: PME# supported from D0 D3hot D3cold
-[    1.487864] pci 0004:01:00.0: 15.752 Gb/s available PCIe bandwidth, limited by 8.0 GT/s PCIe x2 link at 0004:00:00.0 (capable of 31.506 Gb/s with 16.0 GT/s PCIe x2 link)
-[    1.500141] pci 0004:00:00.0: bridge window [mem 0x34300000-0x343fffff]: assigned
-[    1.500158] pci 0004:00:00.0: BAR 0 [mem 0x34400000-0x34400fff]: assigned
-[    1.500174] pci 0004:01:00.0: BAR 0 [mem 0x34300000-0x34300fff 64bit]: assigned
-[    1.500225] pci 0004:01:00.0: BAR 2 [mem 0x34301000-0x34301fff 64bit]: assigned
-[    1.500273] pci 0004:00:00.0: PCI bridge to [bus 01-ff]
-[    1.500281] pci 0004:00:00.0:   bridge window [mem 0x34300000-0x343fffff]
-[    1.500291] pci_bus 0004:00: resource 4 [io  0x200000-0x2fffff]
-[    1.500296] pci_bus 0004:00: resource 5 [mem 0x34300000-0x35ffffff]
-[    1.500301] pci_bus 0004:01: resource 1 [mem 0x34300000-0x343fffff]
-[    1.500422] qcom-pcie 1c00000.pcie: PCI host bridge to bus 0006:00
-[    1.500431] pci_bus 0006:00: root bus resource [bus 00-ff]
-[    1.500437] pci_bus 0006:00: root bus resource [io  0x100000-0x1fffff] (bus address [0x0000-0xfffff])
-[    1.500441] pci_bus 0006:00: root bus resource [mem 0x30300000-0x31ffffff]
-[    1.500482] pci 0006:00:00.0: [17cb:010e] type 01 class 0x060400 PCIe Root Port
-[    1.500492] pci 0006:00:00.0: BAR 0 [mem 0x00000000-0x00000fff]
-[    1.500501] pci 0006:00:00.0: PCI bridge to [bus 01-ff]
-[    1.500507] pci 0006:00:00.0:   bridge window [io  0x100000-0x100fff]
-[    1.500511] pci 0006:00:00.0:   bridge window [mem 0x00000000-0x000fffff]
-[    1.500516] pci 0006:00:00.0:   bridge window [mem 0x00000000-0x000fffff 64bit pref]
-[    1.500558] pci 0006:00:00.0: PME# supported from D0 D3hot D3cold
-[    1.502251] pcieport 0004:00:00.0: PME: Signaling with IRQ 216
-[    1.502422] pci 0006:01:00.0: [17cb:1103] type 00 class 0x028000 PCIe Endpoint
-[    1.502522] pci 0006:01:00.0: BAR 0 [mem 0x00000000-0x001fffff 64bit]
-[    1.503166] pcieport 0004:00:00.0: AER: enabled with IRQ 216
-[    1.503173] pci 0006:01:00.0: PME# supported from D0 D3hot D3cold
-[    1.503505] pci 0006:01:00.0: 4.000 Gb/s available PCIe bandwidth, limited by 5.0 GT/s PCIe x1 link at 0006:00:00.0 (capable of 7.876 Gb/s with 8.0 GT/s PCIe x1 link)
-[    1.516013] pci 0006:00:00.0: bridge window [mem 0x30400000-0x305fffff]: assigned
-[    1.516020] pci 0006:00:00.0: BAR 0 [mem 0x30300000-0x30300fff]: assigned
-[    1.516026] pci 0006:01:00.0: BAR 0 [mem 0x30400000-0x305fffff 64bit]: assigned
-[    1.516077] pci 0006:00:00.0: PCI bridge to [bus 01-ff]
-[    1.516081] pci 0006:00:00.0:   bridge window [mem 0x30400000-0x305fffff]
-[    1.516086] pci_bus 0006:00: resource 4 [io  0x100000-0x1fffff]
-[    1.516090] pci_bus 0006:00: resource 5 [mem 0x30300000-0x31ffffff]
-[    1.516092] pci_bus 0006:01: resource 1 [mem 0x30400000-0x305fffff]
-[    1.517415] pcieport 0006:00:00.0: PME: Signaling with IRQ 218
-[    1.518218] pcieport 0006:00:00.0: AER: enabled with IRQ 218
-[    1.522359] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module leds_qcom_lpg...
-[    1.528261] msm-dp-display aea0000.displayport-controller: Failed to create device link (0x180) with backlight
-[    1.528790] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module panel_edp...
-[    1.673084] panel-simple-dp-aux aux-aea0000.displayport-controller: Detected AUO B133UAN02.1 (0x1e9b)
-[    1.677843] msm_dpu ae01000.display-controller: bound ae90000.displayport-controller (ops dp_display_comp_ops [msm])
-[    1.681581] msm_dpu ae01000.display-controller: bound ae98000.displayport-controller (ops dp_display_comp_ops [msm])
-[    1.683602] msm_dpu ae01000.display-controller: bound aea0000.displayport-controller (ops dp_display_comp_ops [msm])
-[    1.684739] adreno 3d00000.gpu: supply vdd not found, using dummy regulator
-[    1.684808] adreno 3d00000.gpu: supply vddcx not found, using dummy regulator
-[    1.686397] platform 3d6a000.gmu: Adding to iommu group 5
-[    1.695156] msm_dpu ae01000.display-controller: bound 3d00000.gpu (ops a3xx_ops [msm])
-[    1.696148] Console: switching to colour dummy device 80x25
-[    1.699968] [drm:dpu_kms_hw_init:1108] dpu hardware revision:0x80000000
-[    1.703769] [drm] Initialized msm 1.12.0 for ae01000.display-controller on minor 0
-[    1.704139] msm_dpu ae01000.display-controller: [drm:adreno_request_fw [msm]] loaded qcom/a660_sqe.fw from new location
-[    1.704528] msm_dpu ae01000.display-controller: [drm:adreno_request_fw [msm]] loaded qcom/a660_gmu.bin from new location
-[    1.708774] adreno 3d00000.gpu: [drm:adreno_zap_shader_load [msm]] *ERROR* Unable to load qcom/sc8280xp/LENOVO/21BX/qcdxkmsuc8280.mbn
-[    1.708875] msm_dpu ae01000.display-controller: [drm:adreno_load_gpu [msm]] *ERROR* gpu hw init failed: -2
-[    1.843209] Console: switching to colour frame buffer device 240x75
-[    1.843293] fb0: Framebuffer is not in virtual address space.
-[    1.872006] msm_dpu ae01000.display-controller: [drm] fb0: msmdrmfb frame buffer device
-[    1.892995] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module qcom_q6v5_pas...
-[    1.928819] remoteproc remoteproc0: 3000000.remoteproc is available
-[    1.929294] remoteproc remoteproc0: Direct firmware load for qcom/sc8280xp/LENOVO/21BX/qcadsp8280.mbn failed with error -2
-[    1.929300] remoteproc remoteproc0: powering up 3000000.remoteproc
-[    1.929335] remoteproc remoteproc0: Direct firmware load for qcom/sc8280xp/LENOVO/21BX/qcadsp8280.mbn failed with error -2
-[    1.929338] remoteproc remoteproc0: request_firmware failed: -2
-[    1.930200] remoteproc remoteproc1: 1b300000.remoteproc is available
-[    1.930604] remoteproc remoteproc1: Direct firmware load for qcom/sc8280xp/LENOVO/21BX/qccdsp8280.mbn failed with error -2
-[    1.930609] remoteproc remoteproc1: powering up 1b300000.remoteproc
-[    1.930632] remoteproc remoteproc1: Direct firmware load for qcom/sc8280xp/LENOVO/21BX/qccdsp8280.mbn failed with error -2
-[    1.930634] remoteproc remoteproc1: request_firmware failed: -2
-[    1.932646] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module usb_storage...
-[    1.935143] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module uas...
-[    1.938477] usbcore: registered new interface driver uas
-[    1.940483] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module dispcc_sc8280xp...
-[    1.942382] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module gpucc_sc8280xp...
-[    1.944682] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module ufs_qcom...
-[    1.947714] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module phy_qcom_qmp_ufs...
-[    1.950657] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module vfat...
-[    1.952724] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module nls_cp437...
-[    1.955270] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module nls_iso8859-1...
-[    1.957447] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module dm_mod...
-[    1.966159] device-mapper: ioctl: 4.48.0-ioctl (2023-03-01) initialised: dm-devel@lists.linux.dev
-[    1.967295] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] running udev...
-[    1.980664] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] Starting systemd-udevd version 256.4
-[    2.329150] stage-1-init: [Thu Jan  1 00:00:02 UTC 1970] starting device mapper and LVM...
-[    2.439119] stage-1-init: [Thu Jan  1 00:00:02 UTC 1970] mounting tmpfs on /...
-[   12.514252] dwc3 a400000.usb: Adding to iommu group 6
-[   12.515346] dwc3 a600000.usb: Adding to iommu group 7
-[   12.516355] dwc3 a800000.usb: Adding to iommu group 8
-[   12.517488] platform a400000.usb: deferred probe pending: dwc3: failed to initialize core
-[   12.517495] platform a600000.usb: deferred probe pending: dwc3: failed to initialize core
-[   12.517498] platform a800000.usb: deferred probe pending: dwc3: failed to initialize core
-[   12.517500] platform 18591000.cpufreq: deferred probe pending: qcom-cpufreq-hw: Failed to find icc paths
-[   12.517524] qnoc-sc8280xp interconnect-mc-virt: sync_state() pending due to 9091000.pmu
-[   12.517528] qnoc-sc8280xp interconnect-gem-noc: sync_state() pending due to 90b6400.pmu
-[   12.517536] qnoc-sc8280xp interconnect-mc-virt: sync_state() pending due to aa00000.video-codec
-[   12.517540] qnoc-sc8280xp interconnect-mmss-noc: sync_state() pending due to aa00000.video-codec
-[   12.517543] qnoc-sc8280xp interconnect-config-noc: sync_state() pending due to aa00000.video-codec
-[   12.517546] qnoc-sc8280xp interconnect-gem-noc: sync_state() pending due to aa00000.video-codec
-[   12.517550] qnoc-sc8280xp interconnect-mc-virt: sync_state() pending due to ac5a000.camss
-[   12.517552] qnoc-sc8280xp interconnect-mmss-noc: sync_state() pending due to ac5a000.camss
-[   12.517555] qnoc-sc8280xp interconnect-config-noc: sync_state() pending due to ac5a000.camss
-[   12.517558] qnoc-sc8280xp interconnect-gem-noc: sync_state() pending due to ac5a000.camss
-[   12.517570] qcom-rpmhpd 18200000.rsc:power-controller: sync_state() pending due to ad00000.clock-controller
-[   12.517574] qcom-rpmhpd 18200000.rsc:power-controller: sync_state() pending due to abf0000.clock-controller
-[   12.517577] qcom-rpmhpd 18200000.rsc:power-controller: sync_state() pending due to aa00000.video-codec
-[   28.906433] stage-1-init: [Thu Jan  1 00:00:28 UTC 1970] waiting for device /dev/root to appear.......................
-[   28.907392] stage-1-init: [Thu Jan  1 00:00:28 UTC 1970] Timed out waiting for device /dev/root, trying to mount anyway.
-[   28.946300] stage-1-init: [Thu Jan  1 00:00:28 UTC 1970] mounting /dev/root on /iso...
-[   28.947256] /dev/root: Can't lookup blockdev
-[   28.947357] /dev/root: Can't lookup blockdev
-[   28.947439] /dev/root: Can't lookup blockdev
-[   28.947491] /dev/root: Can't lookup blockdev
-[   28.948740] stage-1-init: [Thu Jan  1 00:00:28 UTC 1970] mount: mounting /dev/root on /mnt-root/iso failed: No such file or directory
-[   28.949920] stage-1-init: [Thu Jan  1 00:00:28 UTC 1970] An error occurred in stage 1 of the boot process, which must mount the
-[   28.951113] stage-1-init: [Thu Jan  1 00:00:28 UTC 1970] root filesystem on `/mnt-root' and then start stage 2.  Press one
-[   28.952280] stage-1-init: [Thu Jan  1 00:00:28 UTC 1970] of the following keys:
-[   28.953411] stage-1-init: [Thu Jan  1 00:00:28 UTC 1970] i) to launch an interactive shell
-[   28.954290] stage-1-init: [Thu Jan  1 00:00:28 UTC 1970] f) to start an interactive shell having pid 1 (needed if you want to
-[   28.955404] stage-1-init: [Thu Jan  1 00:00:28 UTC 1970] start stage 2's init manually)
-[   28.956574] stage-1-init: [Thu Jan  1 00:00:28 UTC 1970] r) to reboot immediately
-[   28.957667] stage-1-init: [Thu Jan  1 00:00:28 UTC 1970] *) to ignore the error and continue
-[   28.958759] stage-1-init: [Thu Jan  1 00:00:28 UTC 1970] Starting interactive shell...
+[    0.000346] kfence: initialized - using 2097152 bytes for 255 objects at 0x(____ptrval____)-0x(____ptrval____)
+[    0.000424] Console: colour dummy device 80x25
+[    0.000428] printk: legacy console [tty0] enabled
+[    0.000494] Calibrating delay loop (skipped), value calculated using timer frequency.. 38.40 BogoMIPS (lpj=76800)
+[    0.000498] pid_max: default: 32768 minimum: 301
+[    0.000568] LSM: initializing lsm=capability,landlock,yama,bpf
+[    0.000620] landlock: Up and running.
+[    0.000621] Yama: becoming mindful.
+[    0.000629] LSM support for eBPF active
+[    0.000697] Mount-cache hash table entries: 65536 (order: 7, 524288 bytes, linear)
+[    0.000730] Mountpoint-cache hash table entries: 65536 (order: 7, 524288 bytes, linear)
+[    0.001625] rcu: Hierarchical SRCU implementation.
+[    0.001629] rcu: 	Max phase no-delay instances is 1000.
+[    0.001682] Timer migration: 1 hierarchy levels; 8 children per group; 1 crossnode level
+[    0.002124] fsl-mc MSI: msi-controller@17a40000 domain created
+[    0.003771] Remapping and enabling EFI services.
+[    0.004199] smp: Bringing up secondary CPUs ...
+[    0.004698] Detected PIPT I-cache on CPU1
+[    0.004739] GICv3: CPU1: found redistributor 100 region 0:0x0000000017a80000
+[    0.004749] GICv3: CPU1: using allocated LPI pending table @0x0000000100320000
+[    0.004772] CPU1: Booted secondary processor 0x0000000100 [0x410fd4b0]
+[    0.005342] Detected PIPT I-cache on CPU2
+[    0.005377] GICv3: CPU2: found redistributor 200 region 0:0x0000000017aa0000
+[    0.005388] GICv3: CPU2: using allocated LPI pending table @0x0000000100330000
+[    0.005412] CPU2: Booted secondary processor 0x0000000200 [0x410fd4b0]
+[    0.005970] Detected PIPT I-cache on CPU3
+[    0.006001] GICv3: CPU3: found redistributor 300 region 0:0x0000000017ac0000
+[    0.006011] GICv3: CPU3: using allocated LPI pending table @0x0000000100340000
+[    0.006034] CPU3: Booted secondary processor 0x0000000300 [0x410fd4b0]
+[    0.008593] Detected PIPT I-cache on CPU4
+[    0.008642] GICv3: CPU4: found redistributor 400 region 0:0x0000000017ae0000
+[    0.008654] GICv3: CPU4: using allocated LPI pending table @0x0000000100350000
+[    0.008680] CPU4: Booted secondary processor 0x0000000400 [0x410fd4c0]
+[    0.009372] Detected PIPT I-cache on CPU5
+[    0.009422] GICv3: CPU5: found redistributor 500 region 0:0x0000000017b00000
+[    0.009434] GICv3: CPU5: using allocated LPI pending table @0x0000000100360000
+[    0.009461] CPU5: Booted secondary processor 0x0000000500 [0x410fd4c0]
+[    0.010158] Detected PIPT I-cache on CPU6
+[    0.010207] GICv3: CPU6: found redistributor 600 region 0:0x0000000017b20000
+[    0.010219] GICv3: CPU6: using allocated LPI pending table @0x0000000100370000
+[    0.010246] CPU6: Booted secondary processor 0x0000000600 [0x410fd4c0]
+[    0.010951] Detected PIPT I-cache on CPU7
+[    0.010999] GICv3: CPU7: found redistributor 700 region 0:0x0000000017b40000
+[    0.011011] GICv3: CPU7: using allocated LPI pending table @0x0000000100380000
+[    0.011039] CPU7: Booted secondary processor 0x0000000700 [0x410fd4c0]
+[    0.011145] smp: Brought up 1 node, 8 CPUs
+[    0.011154] SMP: Total of 8 processors activated.
+[    0.011156] CPU: All CPU(s) started at EL1
+[    0.011163] CPU features: detected: 32-bit EL0 Support
+[    0.011164] CPU features: detected: Data cache clean to the PoU not required for I/D coherence
+[    0.011166] CPU features: detected: Common not Private translations
+[    0.011168] CPU features: detected: CRC32 instructions
+[    0.011171] CPU features: detected: RCpc load-acquire (LDAPR)
+[    0.011172] CPU features: detected: LSE atomic instructions
+[    0.011174] CPU features: detected: Privileged Access Never
+[    0.011175] CPU features: detected: RAS Extension Support
+[    0.011177] CPU features: detected: Speculative Store Bypassing Safe (SSBS)
+[    0.011241] alternatives: applying system-wide alternatives
+[    0.015284] CPU features: detected: Hardware dirty bit management on CPU0-7
+[    0.015475] Memory: 31130804K/33249508K available (25216K kernel code, 6824K rwdata, 24460K rodata, 17664K init, 1013K bss, 1975352K reserved, 131072K cma-reserved)
+[    0.015879] devtmpfs: initialized
+[    0.024745] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.024760] futex hash table entries: 2048 (order: 5, 131072 bytes, linear)
+[    0.025270] 2G module region forced by RANDOMIZE_MODULE_REGION_FULL
+[    0.025272] 0 pages in range for non-PLT usage
+[    0.025274] 505424 pages in range for PLT usage
+[    0.025365] pinctrl core: initialized pinctrl subsystem
+[    0.026423] SMBIOS 3.3 present.
+[    0.026430] DMI: LENOVO 21BXCTO1WW/21BXCTO1WW, BIOS N3HET88W (1.60 ) 03/14/2024
+[    0.026465] DMI: Memory slots populated: 1/1
+[    0.027687] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.028515] DMA: preallocated 4096 KiB GFP_KERNEL pool for atomic allocations
+[    0.028920] DMA: preallocated 4096 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
+[    0.029318] DMA: preallocated 4096 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
+[    0.029338] audit: initializing netlink subsys (disabled)
+[    0.029427] audit: type=2000 audit(0.024:1): state=initialized audit_enabled=0 res=1
+[    0.030080] thermal_sys: Registered thermal governor 'step_wise'
+[    0.030083] thermal_sys: Registered thermal governor 'power_allocator'
+[    0.030119] cpuidle: using governor ladder
+[    0.030131] cpuidle: using governor menu
+[    0.030245] hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
+[    0.030328] ASID allocator initialised with 32768 entries
+[    0.031243] Serial: AMBA PL011 UART driver
+[    0.033230] CPUidle PSCI: Initialized CPU PM domain topology using OSI mode
+[    0.041950] platform 88eb000.phy: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/displayport-controller@ae90000
+[    0.041961] platform 88eb000.phy: Fixed dependency cycle(s) with /soc@0/usb@a6f8800/usb@a600000
+[    0.042242] platform 8903000.phy: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/displayport-controller@ae98000
+[    0.042250] platform 8903000.phy: Fixed dependency cycle(s) with /soc@0/usb@a8f8800/usb@a800000
+[    0.043569] platform ac5a000.camss: Fixed dependency cycle(s) with /soc@0/cci@ac4c000/i2c-bus@1/camera@10
+[    0.043885] platform ae00000.display-subsystem: Fixed dependency cycle(s) with /soc@0/clock-controller@af00000
+[    0.044087] platform aec5a00.phy: Fixed dependency cycle(s) with /soc@0/clock-controller@af00000
+[    0.044206] platform aec5a00.phy: Fixed dependency cycle(s) with /soc@0/clock-controller@af00000
+[    0.044271] platform ae00000.display-subsystem: Fixed dependency cycle(s) with /soc@0/clock-controller@af00000
+[    0.044276] platform af00000.clock-controller: Fixed dependency cycle(s) with /soc@0/phy@aec5a00
+[    0.044315] platform af00000.clock-controller: Fixed dependency cycle(s) with /soc@0/phy@8903000
+[    0.044353] platform af00000.clock-controller: Fixed dependency cycle(s) with /soc@0/phy@88eb000
+[    0.048208] platform 18200000.rsc:regulators-0: Fixed dependency cycle(s) with /soc@0/rsc@18200000/regulators-0/smps11
+[    0.048216] platform 18200000.rsc:regulators-0: Fixed dependency cycle(s) with /soc@0/rsc@18200000/regulators-0/smps12
+[    0.048302] platform 18200000.rsc:regulators-1: Fixed dependency cycle(s) with /soc@0/rsc@18200000/regulators-0/smps11
+[    0.048307] platform 18200000.rsc:regulators-1: Fixed dependency cycle(s) with /soc@0/rsc@18200000/regulators-1/bob
+[    0.048311] platform 18200000.rsc:regulators-1: Fixed dependency cycle(s) with /soc@0/rsc@18200000/regulators-1/smps1
+[    0.050687] platform usb0-sbu-mux: Fixed dependency cycle(s) with /pmic-glink/connector@0
+[    0.051169] platform usb1-sbu-mux: Fixed dependency cycle(s) with /pmic-glink/connector@1
+[    0.051634] HugeTLB: registered 1.00 GiB page size, pre-allocated 0 pages
+[    0.051638] HugeTLB: 0 KiB vmemmap can be freed for a 1.00 GiB page
+[    0.051641] HugeTLB: registered 32.0 MiB page size, pre-allocated 0 pages
+[    0.051643] HugeTLB: 0 KiB vmemmap can be freed for a 32.0 MiB page
+[    0.051644] HugeTLB: registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.051646] HugeTLB: 0 KiB vmemmap can be freed for a 2.00 MiB page
+[    0.051648] HugeTLB: registered 64.0 KiB page size, pre-allocated 0 pages
+[    0.051649] HugeTLB: 0 KiB vmemmap can be freed for a 64.0 KiB page
+[    0.052384] ACPI: Interpreter disabled.
+[    0.059667] iommu: Default domain type: Translated
+[    0.059671] iommu: DMA domain TLB invalidation policy: strict mode
+[    0.063525] SCSI subsystem initialized
+[    0.063574] libata version 3.00 loaded.
+[    0.063643] usbcore: registered new interface driver usbfs
+[    0.063653] usbcore: registered new interface driver hub
+[    0.063666] usbcore: registered new device driver usb
+[    0.064065] pps_core: LinuxPPS API ver. 1 registered
+[    0.064067] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.064071] PTP clock support registered
+[    0.064144] EDAC MC: Ver: 3.0.0
+[    0.064354] scmi_core: SCMI protocol bus registered
+[    0.064757] FPGA manager framework
+[    0.064817] Advanced Linux Sound Architecture Driver Initialized.
+[    0.065214] vgaarb: loaded
+[    0.066516] clocksource: Switched to clocksource arch_sys_counter
+[    0.066704] VFS: Disk quotas dquot_6.6.0
+[    0.066721] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    0.066786] netfs: FS-Cache loaded
+[    0.066842] pnp: PnP ACPI: disabled
+[    0.068869] NET: Registered PF_INET protocol family
+[    0.069013] IP idents hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+[    0.097038] tcp_listen_portaddr_hash hash table entries: 16384 (order: 6, 262144 bytes, linear)
+[    0.097195] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    0.097313] TCP established hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+[    0.097689] TCP bind hash table entries: 65536 (order: 9, 2097152 bytes, linear)
+[    0.098364] TCP: Hash tables configured (established 262144 bind 65536)
+[    0.098506] MPTCP token hash table entries: 32768 (order: 7, 786432 bytes, linear)
+[    0.098626] UDP hash table entries: 16384 (order: 7, 524288 bytes, linear)
+[    0.098721] UDP-Lite hash table entries: 16384 (order: 7, 524288 bytes, linear)
+[    0.098838] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    0.099141] RPC: Registered named UNIX socket transport module.
+[    0.099147] RPC: Registered udp transport module.
+[    0.099149] RPC: Registered tcp transport module.
+[    0.099151] RPC: Registered tcp-with-tls transport module.
+[    0.099154] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.099160] NET: Registered PF_XDP protocol family
+[    0.099171] PCI: CLS 0 bytes, default 64
+[    0.099303] Trying to unpack rootfs image as initramfs...
+[    0.102607] kvm [1]: HYP mode not available
+[    0.103326] Initialise system trusted keyrings
+[    0.103399] workingset: timestamp_bits=42 max_order=23 bucket_order=0
+[    0.103831] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.103981] NFS: Registering the id_resolver key type
+[    0.103994] Key type id_resolver registered
+[    0.103996] Key type id_legacy registered
+[    0.104008] nfs4filelayout_init: NFSv4 File Layout Driver Registering...
+[    0.104011] nfs4flexfilelayout_init: NFSv4 Flexfile Layout Driver Registering...
+[    0.104061] 9p: Installing v9fs 9p2000 file system support
+[    0.129709] Key type asymmetric registered
+[    0.129714] Asymmetric key parser 'x509' registered
+[    0.129754] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 244)
+[    0.129821] io scheduler mq-deadline registered
+[    0.129824] io scheduler kyber registered
+[    0.173108] vreg_s10b: Setting 1800000-1800000uV
+[    0.173133] vreg_s1c: Setting 1880000-1900000uV
+[    0.173334] vreg_s11b: Setting 1272000-1272000uV
+[    0.173351] vreg_l1c: Setting 1800000-1800000uV
+[    0.173456] vreg_l8c: Setting 1800000-1800000uV
+[    0.173496] vreg_s12b: Setting 984000-984000uV
+[    0.173559] vreg_l12c: Setting 1800000-1800000uV
+[    0.173716] vreg_l1b: Setting 912000-912000uV
+[    0.173717] vreg_l13c: Setting 3072000-3072000uV
+[    0.173864] vreg_l3b: Setting 1200000-1200000uV
+[    0.173878] vreg_bob: Setting 3008000-3960000uV
+[    0.173979] vreg_l4b: Setting 912000-912000uV
+[    0.174123] vreg_l6b: Setting 880000-880000uV
+[    0.175607] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+[    0.177499] msm_serial: driver initialized
+[    0.177740] SuperH (H)SCI(F) driver initialized
+[    0.177874] STM32 USART driver initialized
+[    0.183937] loop: module loaded
+[    0.184508] megasas: 07.727.03.00-rc1
+[    0.186964] spmi_pmic_arb c440000.spmi: PMIC arbiter version v5 (0x50020000)
+[    0.195137] tun: Universal TUN/TAP device driver, 1.6
+[    0.195804] thunder_xcv, ver 1.0
+[    0.195819] thunder_bgx, ver 1.0
+[    0.195828] nicpf, ver 1.0
+[    0.196606] hns3: Hisilicon Ethernet Network Driver for Hip08 Family - version
+[    0.196610] hns3: Copyright (c) 2017 Huawei Corporation.
+[    0.196623] hclge is initializing
+[    0.196655] e1000: Intel(R) PRO/1000 Network Driver
+[    0.196657] e1000: Copyright (c) 1999-2006 Intel Corporation.
+[    0.196668] e1000e: Intel(R) PRO/1000 Network Driver
+[    0.196670] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+[    0.196682] igb: Intel(R) Gigabit Ethernet Network Driver
+[    0.196685] igb: Copyright (c) 2007-2014 Intel Corporation.
+[    0.196695] igbvf: Intel(R) Gigabit Virtual Function Network Driver
+[    0.196697] igbvf: Copyright (c) 2009 - 2012 Intel Corporation.
+[    0.196900] sky2: driver version 1.30
+[    0.199514] usbcore: registered new interface driver usb-storage
+[    0.199566] usbcore: registered new interface driver usbserial_generic
+[    0.199578] usbserial: USB Serial support registered for generic
+[    0.203934] i2c_dev: i2c /dev entries driver
+[    0.216238] sdhci: Secure Digital Host Controller Interface driver
+[    0.216244] sdhci: Copyright(c) Pierre Ossman
+[    0.216777] Synopsys Designware Multimedia Card Interface Driver
+[    0.217439] sdhci-pltfm: SDHCI platform and OF driver helper
+[    0.225056] ledtrig-cpu: registered to indicate activity on CPUs
+[    0.225717] efifb: probing for efifb
+[    0.225782] efifb: framebuffer at 0xc6200000, using 9000k, total 9000k
+[    0.225788] efifb: mode is 1920x1200x32, linelength=7680, pages=1
+[    0.225791] efifb: scrolling: redraw
+[    0.225792] efifb: Truecolor: size=8:8:8:8, shift=24:16:8:0
+[    0.226003] fbcon: Deferring console take-over
+[    0.226006] fb0: EFI VGA frame buffer device
+[    0.243140] hid: raw HID events driver (C) Jiri Kosina
+[    0.243333] usbcore: registered new interface driver usbhid
+[    0.243337] usbhid: USB HID core driver
+[    0.248240] hw perfevents: enabled with armv8_pmuv3 PMU driver, 7 counters available
+[    0.253656] drop_monitor: Initializing network drop monitor service
+[    0.253923] NET: Registered PF_INET6 protocol family
+[    1.695783] Freeing initrd memory: 843048K
+[    1.700900] Segment Routing with IPv6
+[    1.700950] In-situ OAM (IOAM) with IPv6
+[    1.701064] NET: Registered PF_PACKET protocol family
+[    1.701574] 9pnet: Installing 9P2000 support
+[    1.701653] Key type dns_resolver registered
+[    1.708080] registered taskstats version 1
+[    1.708308] Loading compiled-in X.509 certificates
+[    1.718153] Demotion targets for Node 0: null
+[    1.718541] Key type .fscrypt registered
+[    1.718544] Key type fscrypt-provisioning registered
+[    1.737788] qcom_scm: convention: smc arm 64
+[    1.738558] qcom_scm firmware:scm: qseecom: found qseecom with version 0x1402000
+[    1.738809] qcom_qseecom qcom_qseecom: setting up client for qcom.tz.uefisecapp
+[    1.738851] efivars: Registered efivars operations
+[    1.743362] vreg_l2d: Setting 3072000-3072000uV
+[    1.743509] vreg_l3d: Setting 1200000-1200000uV
+[    1.743651] vreg_l4d: Setting 1200000-1200000uV
+[    1.743733] arm-smmu 3da0000.iommu: probing hardware configuration...
+[    1.743738] arm-smmu 3da0000.iommu: SMMUv2 with:
+[    1.743739] vreg_l6d: Setting 880000-880000uV
+[    1.743761] arm-smmu 3da0000.iommu: 	stage 1 translation
+[    1.743763] arm-smmu 3da0000.iommu: 	coherent table walk
+[    1.743766] arm-smmu 3da0000.iommu: 	stream matching with 9 register groups
+[    1.743780] arm-smmu 3da0000.iommu: 	7 context banks (0 stage-2 only)
+[    1.743797] arm-smmu 3da0000.iommu: 	Supported page sizes: 0x61311000
+[    1.743799] arm-smmu 3da0000.iommu: 	Stage-1: 48-bit VA -> 36-bit IPA
+[    1.743840] vreg_l7d: Setting 3072000-3072000uV
+[    1.743913] arm-smmu 3da0000.iommu: 	preserved 0 boot mappings
+[    1.743928] vreg_l8d: Setting 912000-912000uV
+[    1.744027] vreg_l9d: Setting 912000-912000uV
+[    1.744122] vreg_l10d: Setting 912000-912000uV
+[    1.746747] arm-smmu 15000000.iommu: probing hardware configuration...
+[    1.746751] arm-smmu 15000000.iommu: SMMUv2 with:
+[    1.746757] arm-smmu 15000000.iommu: 	stage 1 translation
+[    1.746759] arm-smmu 15000000.iommu: 	non-coherent table walk
+[    1.746760] arm-smmu 15000000.iommu: 	(IDR0.CTTW overridden by FW configuration)
+[    1.746764] arm-smmu 15000000.iommu: 	stream matching with 162 register groups
+[    1.746772] arm-smmu 15000000.iommu: 	110 context banks (0 stage-2 only)
+[    1.746781] arm-smmu 15000000.iommu: 	Limiting the stream matching groups to 128
+[    1.747124] arm-smmu 15000000.iommu: 	Supported page sizes: 0x61311000
+[    1.747126] arm-smmu 15000000.iommu: 	Stage-1: 36-bit VA -> 36-bit IPA
+[    1.747191] arm-smmu 15000000.iommu: 	preserved 0 boot mappings
+[    1.761291] platform 88eb000.phy: Fixed dependency cycle(s) with /soc@0/usb@a6f8800/usb@a600000
+[    1.761342] platform a600000.usb: Fixed dependency cycle(s) with /pmic-glink/connector@0
+[    1.761353] platform a600000.usb: Fixed dependency cycle(s) with /soc@0/phy@88eb000
+[    1.764120] platform 8903000.phy: Fixed dependency cycle(s) with /soc@0/usb@a8f8800/usb@a800000
+[    1.764164] platform a800000.usb: Fixed dependency cycle(s) with /pmic-glink/connector@1
+[    1.764175] platform a800000.usb: Fixed dependency cycle(s) with /soc@0/phy@8903000
+[    1.766784] geni_se_qup 8c0000.geniqup: Adding to iommu group 0
+[    1.767758] geni_se_qup 9c0000.geniqup: Adding to iommu group 1
+[    1.768612] 988000.serial: ttyHS1 at MMIO 0x988000 (irq = 192, base_baud = 0) is a MSM
+[    1.768807] serial serial0: tty port ttyHS1 registered
+[    1.769662] geni_se_qup ac0000.geniqup: Adding to iommu group 2
+[    1.775937] input: gpio-keys as /devices/platform/gpio-keys/input/input0
+[    1.828547] clk: Not disabling unused clocks
+[    1.828554] PM: genpd: Not disabling unused power domains
+[    1.828567] ALSA device list:
+[    1.828572]   No soundcards found.
+[    1.835396] Freeing unused kernel memory: 17664K
+[    1.835488] Run /init as init process
+[    1.835492]   with arguments:
+[    1.835495]     /init
+[    1.835497]   with environment:
+[    1.835499]     HOME=/
+[    1.835501]     TERM=linux
+[    1.835503]     BOOT_IMAGE=/boot/Image
+[    1.839977] fbcon: Taking over console
+[    1.840220] Console: switching to colour frame buffer device 240x75
+[    1.867274] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module loop...
+[    1.869730] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module overlay...
+[    1.880943] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module qnoc-sc8280xp...
+[    1.883345] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module phy_qcom_qmp_pcie...
+[    1.888687] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module nvme...
+[    1.905343] stage-1-init: [Thu Jan  1 00:00:01 UTC 1970] loading module pcie_qcom...
+[    1.907916] qcom-pcie 1c20000.pcie: supply vdda not found, using dummy regulator
+[    1.908086] qcom-pcie 1c20000.pcie: host bridge /soc@0/pcie@1c20000 ranges:
+[    1.908099] qcom-pcie 1c20000.pcie:       IO 0x003c200000..0x003c2fffff -> 0x0000000000
+[    1.908109] qcom-pcie 1c20000.pcie:      MEM 0x003c300000..0x003dffffff -> 0x003c300000
+[    2.025147] qcom-pcie 1c20000.pcie: iATU: unroll T, 8 ob, 8 ib, align 4K, limit 1024G
+[    2.123464] qcom-pcie 1c20000.pcie: PCIe Gen.3 x4 link up
+[    2.124171] qcom-pcie 1c20000.pcie: PCI host bridge to bus 0002:00
+[    2.124199] pci_bus 0002:00: root bus resource [bus 00-ff]
+[    2.124227] pci_bus 0002:00: root bus resource [io  0x0000-0xfffff]
+[    2.124240] pci_bus 0002:00: root bus resource [mem 0x3c300000-0x3dffffff]
+[    2.124392] pci 0002:00:00.0: [17cb:010e] type 01 class 0x060400 PCIe Root Port
+[    2.124423] pci 0002:00:00.0: BAR 0 [mem 0x00000000-0x00000fff]
+[    2.124445] pci 0002:00:00.0: PCI bridge to [bus 01-ff]
+[    2.124458] pci 0002:00:00.0:   bridge window [io  0x0000-0x0fff]
+[    2.124469] pci 0002:00:00.0:   bridge window [mem 0x00000000-0x000fffff]
+[    2.124484] pci 0002:00:00.0:   bridge window [mem 0x00000000-0x000fffff 64bit pref]
+[    2.124587] pci 0002:00:00.0: PME# supported from D0 D3hot D3cold
+[    2.131994] pci 0002:01:00.0: [144d:a80b] type 00 class 0x010802 PCIe Endpoint
+[    2.132144] pci 0002:01:00.0: BAR 0 [mem 0x00000000-0x00003fff 64bit]
+[    2.133175] pci 0002:01:00.0: PME# supported from D0 D3hot
+[    2.133742] pci 0002:01:00.0: 31.504 Gb/s available PCIe bandwidth, limited by 8.0 GT/s PCIe x4 link at 0002:00:00.0 (capable of 63.012 Gb/s with 16.0 GT/s PCIe x4 link)
+[    2.147519] pci 0002:00:00.0: bridge window [mem 0x3c300000-0x3c3fffff]: assigned
+[    2.147567] pci 0002:00:00.0: BAR 0 [mem 0x3c400000-0x3c400fff]: assigned
+[    2.147604] pci 0002:01:00.0: BAR 0 [mem 0x3c300000-0x3c303fff 64bit]: assigned
+[    2.147690] pci 0002:00:00.0: PCI bridge to [bus 01-ff]
+[    2.147716] pci 0002:00:00.0:   bridge window [mem 0x3c300000-0x3c3fffff]
+[    2.147745] pci_bus 0002:00: resource 4 [io  0x0000-0xfffff]
+[    2.147769] pci_bus 0002:00: resource 5 [mem 0x3c300000-0x3dffffff]
+[    2.147790] pci_bus 0002:01: resource 1 [mem 0x3c300000-0x3c3fffff]
+[    2.151385] pcieport 0002:00:00.0: PME: Signaling with IRQ 195
+[    2.152915] pcieport 0002:00:00.0: AER: enabled with IRQ 195
+[    2.154202] nvme nvme0: pci function 0002:01:00.0
+[    2.154245] nvme 0002:01:00.0: enabling device (0000 -> 0002)
+[    2.157706] nvme nvme0: D3 entry latency set to 8 seconds
+[    2.200263] hwmon hwmon11: temp1_input not attached to any thermal zone
+[    2.200545] hwmon hwmon11: temp2_input not attached to any thermal zone
+[    2.200760] hwmon hwmon11: temp3_input not attached to any thermal zone
+[    2.274760] nvme nvme0: allocated 64 MiB host memory buffer.
+[    2.307478] nvme nvme0: 8/0/0 default/read/poll queues
+[    2.327212] nvme nvme0: Ignoring bogus Namespace Identifiers
+[    2.348520]  nvme0n1: p1 p2 p3 p4
+[    2.363170] stage-1-init: [Thu Jan  1 00:00:02 UTC 1970] loading module i2c_qcom_geni...
+[    2.372568] stage-1-init: [Thu Jan  1 00:00:02 UTC 1970] loading module i2c_hid_of...
+[    2.375725] stage-1-init: [Thu Jan  1 00:00:02 UTC 1970] loading module hid_generic...
+[    2.378380] stage-1-init: [Thu Jan  1 00:00:02 UTC 1970] loading module pwm_bl...
+[    2.381840] stage-1-init: [Thu Jan  1 00:00:02 UTC 1970] loading module qrtr...
+[    2.383404] NET: Registered PF_QIPCRTR protocol family
+[    2.385686] stage-1-init: [Thu Jan  1 00:00:02 UTC 1970] loading module phy_qcom_edp...
+[    2.388824] stage-1-init: [Thu Jan  1 00:00:02 UTC 1970] loading module i2c_qcom_geni...
+[    2.390628] stage-1-init: [Thu Jan  1 00:00:02 UTC 1970] loading module gpio_sbu_mux...
+[    2.396691] stage-1-init: [Thu Jan  1 00:00:02 UTC 1970] loading module pmic_glink_altmode...
+[    2.403106] stage-1-init: [Thu Jan  1 00:00:02 UTC 1970] loading module spmi_pmic_arb...
+[    2.405293] stage-1-init: [Thu Jan  1 00:00:02 UTC 1970] loading module phy_qcom_qmp_combo...
+[    2.408895] qcom_pmic_glink pmic-glink: Failed to create device link (0x180) with 88eb000.phy
+[    2.409738] qcom_pmic_glink pmic-glink: Failed to create device link (0x180) with 8903000.phy
+[    2.411978] stage-1-init: [Thu Jan  1 00:00:02 UTC 1970] loading module qcom_spmi_pmic...
+[    2.414344] stage-1-init: [Thu Jan  1 00:00:02 UTC 1970] loading module msm...
+[    2.488881] adreno 3d00000.gpu: Adding to iommu group 3
+[    2.489771] msm-mdss ae00000.display-subsystem: Adding to iommu group 4
+[    2.514743] platform ae01000.display-controller: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/displayport-controller@aea0000
+[    2.514752] platform ae01000.display-controller: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/displayport-controller@ae98000
+[    2.514757] platform ae01000.display-controller: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/displayport-controller@ae90000
+[    2.517293] platform aea0000.displayport-controller: Fixed dependency cycle(s) with /soc@0/display-subsystem@ae00000/displayport-controller@aea0000/aux-bus/panel
+[    2.582681] stage-1-init: [Thu Jan  1 00:00:02 UTC 1970] loading module pinctrl_spmi_gpio...
+[    2.604819] stage-1-init: [Thu Jan  1 00:00:02 UTC 1970] loading module leds_qcom_lpg...
+[    2.606775] qcom-pcie 1c00000.pcie: supply vdda not found, using dummy regulator
+[    2.607025] qcom-pcie 1c00000.pcie: host bridge /soc@0/pcie@1c00000 ranges:
+[    2.607061] qcom-pcie 1c00000.pcie:       IO 0x0030200000..0x00302fffff -> 0x0000000000
+[    2.607085] qcom-pcie 1c00000.pcie:      MEM 0x0030300000..0x0031ffffff -> 0x0030300000
+[    2.607225] qcom-pcie 1c10000.pcie: supply vdda not found, using dummy regulator
+[    2.607339] qcom-pcie 1c10000.pcie: host bridge /soc@0/pcie@1c10000 ranges:
+[    2.607362] qcom-pcie 1c10000.pcie:       IO 0x0034200000..0x00342fffff -> 0x0000000000
+[    2.607371] qcom-pcie 1c10000.pcie:      MEM 0x0034300000..0x0035ffffff -> 0x0034300000
+[    2.689579] input: hid-over-i2c 04F3:000D Keyboard as /devices/platform/soc@0/8c0000.geniqup/894000.i2c/i2c-21/21-0068/0018:04F3:000D.0001/input/input1
+[    2.720392] qcom-pcie 1c10000.pcie: iATU: unroll T, 8 ob, 8 ib, align 4K, limit 1024G
+[    2.720402] qcom-pcie 1c00000.pcie: iATU: unroll T, 8 ob, 8 ib, align 4K, limit 1024G
+[    2.762019] input: hid-over-i2c 06CB:CE5C Mouse as /devices/platform/soc@0/8c0000.geniqup/894000.i2c/i2c-21/21-002c/0018:06CB:CE5C.0002/input/input3
+[    2.783312] input: hid-over-i2c 04F3:000D Mouse as /devices/platform/soc@0/8c0000.geniqup/894000.i2c/i2c-21/21-0068/0018:04F3:000D.0001/input/input2
+[    2.786656] hid-generic 0018:04F3:000D.0001: input,hidraw0: I2C HID v1.00 Keyboard [hid-over-i2c 04F3:000D] on 21-0068
+[    2.786743] input: hid-over-i2c 06CB:CE5C Touchpad as /devices/platform/soc@0/8c0000.geniqup/894000.i2c/i2c-21/21-002c/0018:06CB:CE5C.0002/input/input4
+[    2.788669] hid-generic 0018:06CB:CE5C.0002: input,hidraw1: I2C HID v1.00 Mouse [hid-over-i2c 06CB:CE5C] on 21-002c
+[    2.819609] qcom-pcie 1c00000.pcie: PCIe Gen.2 x1 link up
+[    2.819609] qcom-pcie 1c10000.pcie: PCIe Gen.3 x2 link up
+[    2.819745] qcom-pcie 1c10000.pcie: PCI host bridge to bus 0004:00
+[    2.819756] pci_bus 0004:00: root bus resource [bus 00-ff]
+[    2.819765] pci_bus 0004:00: root bus resource [io  0x200000-0x2fffff] (bus address [0x0000-0xfffff])
+[    2.819770] pci_bus 0004:00: root bus resource [mem 0x34300000-0x35ffffff]
+[    2.819828] pci 0004:00:00.0: [17cb:010e] type 01 class 0x060400 PCIe Root Port
+[    2.819845] pci 0004:00:00.0: BAR 0 [mem 0x00000000-0x00000fff]
+[    2.819858] pci 0004:00:00.0: PCI bridge to [bus 01-ff]
+[    2.819865] pci 0004:00:00.0:   bridge window [io  0x200000-0x200fff]
+[    2.819870] pci 0004:00:00.0:   bridge window [mem 0x00000000-0x000fffff]
+[    2.819879] pci 0004:00:00.0:   bridge window [mem 0x00000000-0x000fffff 64bit pref]
+[    2.819931] pci 0004:00:00.0: PME# supported from D0 D3hot D3cold
+[    2.822385] pci 0004:01:00.0: [105b:e0c3] type 00 class 0x0d4000 PCIe Endpoint
+[    2.822474] pci 0004:01:00.0: BAR 0 [mem 0x00000000-0x00000fff 64bit]
+[    2.822558] pci 0004:01:00.0: BAR 2 [mem 0x00000000-0x00000fff 64bit]
+[    2.823149] pci 0004:01:00.0: PME# supported from D0 D3hot D3cold
+[    2.823508] pci 0004:01:00.0: 15.752 Gb/s available PCIe bandwidth, limited by 8.0 GT/s PCIe x2 link at 0004:00:00.0 (capable of 31.506 Gb/s with 16.0 GT/s PCIe x2 link)
+[    2.835528] pci 0004:00:00.0: bridge window [mem 0x34300000-0x343fffff]: assigned
+[    2.835544] pci 0004:00:00.0: BAR 0 [mem 0x34400000-0x34400fff]: assigned
+[    2.835558] pci 0004:01:00.0: BAR 0 [mem 0x34300000-0x34300fff 64bit]: assigned
+[    2.835614] pci 0004:01:00.0: BAR 2 [mem 0x34301000-0x34301fff 64bit]: assigned
+[    2.835661] pci 0004:00:00.0: PCI bridge to [bus 01-ff]
+[    2.835670] pci 0004:00:00.0:   bridge window [mem 0x34300000-0x343fffff]
+[    2.835683] pci_bus 0004:00: resource 4 [io  0x200000-0x2fffff]
+[    2.835690] pci_bus 0004:00: resource 5 [mem 0x34300000-0x35ffffff]
+[    2.835697] pci_bus 0004:01: resource 1 [mem 0x34300000-0x343fffff]
+[    2.835856] qcom-pcie 1c00000.pcie: PCI host bridge to bus 0006:00
+[    2.835865] pci_bus 0006:00: root bus resource [bus 00-ff]
+[    2.835872] pci_bus 0006:00: root bus resource [io  0x100000-0x1fffff] (bus address [0x0000-0xfffff])
+[    2.835876] pci_bus 0006:00: root bus resource [mem 0x30300000-0x31ffffff]
+[    2.835904] pci 0006:00:00.0: [17cb:010e] type 01 class 0x060400 PCIe Root Port
+[    2.835916] pci 0006:00:00.0: BAR 0 [mem 0x00000000-0x00000fff]
+[    2.835926] pci 0006:00:00.0: PCI bridge to [bus 01-ff]
+[    2.835931] pci 0006:00:00.0:   bridge window [io  0x100000-0x100fff]
+[    2.835934] pci 0006:00:00.0:   bridge window [mem 0x00000000-0x000fffff]
+[    2.835940] pci 0006:00:00.0:   bridge window [mem 0x00000000-0x000fffff 64bit pref]
+[    2.835982] pci 0006:00:00.0: PME# supported from D0 D3hot D3cold
+[    2.837573] pcieport 0004:00:00.0: PME: Signaling with IRQ 216
+[    2.837832] pci 0006:01:00.0: [17cb:1103] type 00 class 0x028000 PCIe Endpoint
+[    2.837932] pci 0006:01:00.0: BAR 0 [mem 0x00000000-0x001fffff 64bit]
+[    2.838502] pcieport 0004:00:00.0: AER: enabled with IRQ 216
+[    2.838601] pci 0006:01:00.0: PME# supported from D0 D3hot D3cold
+[    2.838931] pci 0006:01:00.0: 4.000 Gb/s available PCIe bandwidth, limited by 5.0 GT/s PCIe x1 link at 0006:00:00.0 (capable of 7.876 Gb/s with 8.0 GT/s PCIe x1 link)
+[    2.851007] pci 0006:00:00.0: bridge window [mem 0x30400000-0x305fffff]: assigned
+[    2.851016] pci 0006:00:00.0: BAR 0 [mem 0x30300000-0x30300fff]: assigned
+[    2.851024] pci 0006:01:00.0: BAR 0 [mem 0x30400000-0x305fffff 64bit]: assigned
+[    2.851076] pci 0006:00:00.0: PCI bridge to [bus 01-ff]
+[    2.851082] pci 0006:00:00.0:   bridge window [mem 0x30400000-0x305fffff]
+[    2.851090] pci_bus 0006:00: resource 4 [io  0x100000-0x1fffff]
+[    2.851095] pci_bus 0006:00: resource 5 [mem 0x30300000-0x31ffffff]
+[    2.851101] pci_bus 0006:01: resource 1 [mem 0x30400000-0x305fffff]
+[    2.852376] pcieport 0006:00:00.0: PME: Signaling with IRQ 218
+[    2.853188] pcieport 0006:00:00.0: AER: enabled with IRQ 218
+[    2.860829] msm-dp-display aea0000.displayport-controller: Failed to create device link (0x180) with backlight
+[    2.862777] stage-1-init: [Thu Jan  1 00:00:02 UTC 1970] loading module panel_edp...
+[    3.009886] panel-simple-dp-aux aux-aea0000.displayport-controller: Detected AUO B133UAN02.1 (0x1e9b)
+[    3.015566] msm_dpu ae01000.display-controller: bound ae90000.displayport-controller (ops dp_display_comp_ops [msm])
+[    3.020119] msm_dpu ae01000.display-controller: bound ae98000.displayport-controller (ops dp_display_comp_ops [msm])
+[    3.023400] msm_dpu ae01000.display-controller: bound aea0000.displayport-controller (ops dp_display_comp_ops [msm])
+[    3.025164] adreno 3d00000.gpu: supply vdd not found, using dummy regulator
+[    3.025249] adreno 3d00000.gpu: supply vddcx not found, using dummy regulator
+[    3.027295] platform 3d6a000.gmu: Adding to iommu group 5
+[    3.038930] msm_dpu ae01000.display-controller: bound 3d00000.gpu (ops a3xx_ops [msm])
+[    3.040051] Console: switching to colour dummy device 80x25
+[    3.041622] [drm:dpu_kms_hw_init:1108] dpu hardware revision:0x80000000
+[    3.043188] [drm] Initialized msm 1.12.0 for ae01000.display-controller on minor 0
+[    3.043712] msm_dpu ae01000.display-controller: [drm:adreno_request_fw [msm]] loaded qcom/a660_sqe.fw from new location
+[    3.044401] msm_dpu ae01000.display-controller: [drm:adreno_request_fw [msm]] loaded qcom/a660_gmu.bin from new location
+[    3.219824] Console: switching to colour frame buffer device 240x75
+[    3.219839] fb0: Framebuffer is not in virtual address space.
+[    3.240638] msm_dpu ae01000.display-controller: [drm] fb0: msmdrmfb frame buffer device
+[    3.258985] stage-1-init: [Thu Jan  1 00:00:03 UTC 1970] loading module qcom_q6v5_pas...
+[    3.277315] remoteproc remoteproc0: 3000000.remoteproc is available
+[    3.278610] remoteproc remoteproc1: 1b300000.remoteproc is available
+[    3.281906] stage-1-init: [Thu Jan  1 00:00:03 UTC 1970] loading module usb_storage...
+[    3.284059] stage-1-init: [Thu Jan  1 00:00:03 UTC 1970] loading module uas...
+[    3.285845] usbcore: registered new interface driver uas
+[    3.288337] stage-1-init: [Thu Jan  1 00:00:03 UTC 1970] loading module dispcc_sc8280xp...
+[    3.290080] stage-1-init: [Thu Jan  1 00:00:03 UTC 1970] loading module gpucc_sc8280xp...
+[    3.292447] stage-1-init: [Thu Jan  1 00:00:03 UTC 1970] loading module ufs_qcom...
+[    3.292922] remoteproc remoteproc1: powering up 1b300000.remoteproc
+[    3.296831] stage-1-init: [Thu Jan  1 00:00:03 UTC 1970] loading module phy_qcom_qmp_ufs...
+[    3.296909] remoteproc remoteproc1: Booting fw image qcom/sc8280xp/LENOVO/21BX/qccdsp8280.mbn, size 3575808
+[    3.300608] stage-1-init: [Thu Jan  1 00:00:03 UTC 1970] loading module vfat...
+[    3.302935] stage-1-init: [Thu Jan  1 00:00:03 UTC 1970] loading module nls_cp437...
+[    3.305807] stage-1-init: [Thu Jan  1 00:00:03 UTC 1970] loading module nls_iso8859-1...
+[    3.308664] stage-1-init: [Thu Jan  1 00:00:03 UTC 1970] loading module dm_mod...
+[    3.320117] device-mapper: ioctl: 4.48.0-ioctl (2023-03-01) initialised: dm-devel@lists.linux.dev
+[    3.321682] stage-1-init: [Thu Jan  1 00:00:03 UTC 1970] running udev...
+[    3.322469] remoteproc remoteproc0: powering up 3000000.remoteproc
+[    3.333478] stage-1-init: [Thu Jan  1 00:00:03 UTC 1970] Starting systemd-udevd version 256.4
+[    3.335606] remoteproc remoteproc0: Booting fw image qcom/sc8280xp/LENOVO/21BX/qcadsp8280.mbn, size 14367860
+[    3.445993] remoteproc remoteproc1: remote processor 1b300000.remoteproc is now up
+[    3.511424] remoteproc remoteproc0: remote processor 3000000.remoteproc is now up
+[    3.557834] stage-1-init: [Thu Jan  1 00:00:03 UTC 1970] starting device mapper and LVM...
+[    3.679242] stage-1-init: [Thu Jan  1 00:00:03 UTC 1970] mounting tmpfs on /...
+[   13.541100] dwc3 a400000.usb: Adding to iommu group 6
+[   13.542169] dwc3 a600000.usb: Adding to iommu group 7
+[   13.542793] dwc3 a800000.usb: Adding to iommu group 8
+[   13.543890] platform a400000.usb: deferred probe pending: dwc3: failed to initialize core
+[   13.543897] platform a600000.usb: deferred probe pending: dwc3: failed to initialize core
+[   13.543900] platform a800000.usb: deferred probe pending: dwc3: failed to initialize core
+[   13.543903] platform 18591000.cpufreq: deferred probe pending: qcom-cpufreq-hw: Failed to find icc paths
+[   13.543924] qnoc-sc8280xp interconnect-mc-virt: sync_state() pending due to 9091000.pmu
+[   13.543929] qnoc-sc8280xp interconnect-gem-noc: sync_state() pending due to 90b6400.pmu
+[   13.543936] qnoc-sc8280xp interconnect-mc-virt: sync_state() pending due to aa00000.video-codec
+[   13.543940] qnoc-sc8280xp interconnect-mmss-noc: sync_state() pending due to aa00000.video-codec
+[   13.543944] qnoc-sc8280xp interconnect-config-noc: sync_state() pending due to aa00000.video-codec
+[   13.543947] qnoc-sc8280xp interconnect-gem-noc: sync_state() pending due to aa00000.video-codec
+[   13.543951] qnoc-sc8280xp interconnect-mc-virt: sync_state() pending due to ac5a000.camss
+[   13.543954] qnoc-sc8280xp interconnect-mmss-noc: sync_state() pending due to ac5a000.camss
+[   13.543956] qnoc-sc8280xp interconnect-config-noc: sync_state() pending due to ac5a000.camss
+[   13.543959] qnoc-sc8280xp interconnect-gem-noc: sync_state() pending due to ac5a000.camss
+[   13.543972] qcom-rpmhpd 18200000.rsc:power-controller: sync_state() pending due to ad00000.clock-controller
+[   13.543975] qcom-rpmhpd 18200000.rsc:power-controller: sync_state() pending due to abf0000.clock-controller
+[   13.543979] qcom-rpmhpd 18200000.rsc:power-controller: sync_state() pending due to aa00000.video-codec
+[   29.015298] stage-1-init: [Thu Jan  1 00:00:29 UTC 1970] waiting for device /dev/root to appear.......................
+[   29.016577] stage-1-init: [Thu Jan  1 00:00:29 UTC 1970] Timed out waiting for device /dev/root, trying to mount anyway.
+[   29.071711] stage-1-init: [Thu Jan  1 00:00:29 UTC 1970] mounting /dev/root on /iso...
+[   29.072045] /dev/root: Can't lookup blockdev
+[   29.072159] /dev/root: Can't lookup blockdev
+[   29.072228] /dev/root: Can't lookup blockdev
+[   29.072288] /dev/root: Can't lookup blockdev
+[   29.073354] stage-1-init: [Thu Jan  1 00:00:29 UTC 1970] mount: mounting /dev/root on /mnt-root/iso failed: No such file or directory
+[   29.074422] stage-1-init: [Thu Jan  1 00:00:29 UTC 1970] An error occurred in stage 1 of the boot process, which must mount the
+[   29.075379] stage-1-init: [Thu Jan  1 00:00:29 UTC 1970] root filesystem on `/mnt-root' and then start stage 2.  Press one
+[   29.076318] stage-1-init: [Thu Jan  1 00:00:29 UTC 1970] of the following keys:
+[   29.077195] stage-1-init: [Thu Jan  1 00:00:29 UTC 1970] i) to launch an interactive shell
+[   29.078332] stage-1-init: [Thu Jan  1 00:00:29 UTC 1970] f) to start an interactive shell having pid 1 (needed if you want to
+[   29.079191] stage-1-init: [Thu Jan  1 00:00:29 UTC 1970] start stage 2's init manually)
+[   29.080333] stage-1-init: [Thu Jan  1 00:00:29 UTC 1970] r) to reboot immediately
+[   29.081159] stage-1-init: [Thu Jan  1 00:00:29 UTC 1970] *) to ignore the error and continue
+[   29.082313] stage-1-init: [Thu Jan  1 00:00:29 UTC 1970] Starting interactive shell...
