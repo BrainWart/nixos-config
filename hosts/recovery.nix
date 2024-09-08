@@ -36,34 +36,58 @@ in {
   isoImage.isoBaseName = "${config.system.nixos.distroId}-recovery";
   isoImage.appendToMenuLabel = " Recovery with Synology ABB";
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.callPackage ({ buildLinux, ...}@args: 
+    buildLinux (
+      args // {
+        kernelPatches = (args.kernelPatches or [ ]);
+        extraMeta.branch = "6.11.0-rc6";
+        src = pkgs.fetchFromGitHub {
+          owner = "jhovold";
+          repo = "linux";
+          rev = "wip/sc8280xp-6.11-rc6";
+          hash = "sha256-p2rP8fErEnrlrkl2l4ZfnWOG2U/ohAC9blx+sTpU4+I=";
+        };
+        version = "6.11.0-rc6";
+      }
+    )
+  ) {});
 
-  boot.initrd.systemd.enable = true;
-  boot.initrd.systemd.emergencyAccess = true;
+  boot.initrd = {
+    systemd = {
+      enable = false;
+      emergencyAccess = true;
+    };
+    extraFiles = {
+      "lib" = {
+        source = config.hardware.firmware;
+      };
+    };
 
-  boot.initrd.kernelModules = [
-    # HyperV
-    "hv_balloon" "hv_netvsc" "hv_storvsc"
-    "hv_utils" "hv_vmbus" "hyperv_keyboard"
+    kernelModules = [
+      # # HyperV
+      # "hv_balloon" "hv_netvsc" "hv_storvsc"
+      # "hv_utils" "hv_vmbus" "hyperv_keyboard"
 
-    # x13s ubuntu concept
-    # Core
-    "qnoc-sc8280xp"
-    # NVME
-    "phy_qcom_qmp_pcie" "nvme" # "pcie_qcom" # not a module in this version
-    # Keyboard
-    "i2c_qcom_geni" "i2c_hid_of" "hid_generic"
-    # Display
-    "pwm_bl" "qrtr" "phy_qcom_edp" "i2c_qcom_geni"
-    "gpio_sbu_mux" "pmic_glink_altmode" "spmi_pmic_arb"
-    "phy_qcom_qmp_combo" "qcom_spmi_pmic" "msm"
-    "pinctrl_spmi_gpio" "leds_qcom_lpg" "panel_edp"
-    # USB (required for installation from USB)
-    "qcom_q6v5_pas" "usb_storage" "uas"
-    # more from jhovald
-    "dispcc_sc8280xp" "gpucc_sc8280xp" "ufs_qcom"
-    "phy_qcom_qmp_ufs"
-  ];
+      # x13s ubuntu concept
+      # Core
+      "qnoc-sc8280xp"
+      # NVME
+      "phy_qcom_qmp_pcie" "nvme" # "pcie_qcom" # not a module in this version
+      # Keyboard
+      "i2c_qcom_geni" "i2c_hid_of" "hid_generic"
+      # Display
+      "pwm_bl" "qrtr" "phy_qcom_edp" "i2c_qcom_geni"
+      "gpio_sbu_mux" "pmic_glink_altmode" "spmi_pmic_arb"
+      "phy_qcom_qmp_combo" "qcom_spmi_pmic" "msm"
+      "pinctrl_spmi_gpio" "leds_qcom_lpg" "panel_edp"
+      # USB (required for installation from USB)
+      "qcom_q6v5_pas" "usb_storage" "uas"
+      # more from jhovald
+      "dispcc_sc8280xp" "gpucc_sc8280xp" "ufs_qcom"
+      "phy_qcom_qmp_ufs"
+    ];
+  };
 
   boot = {
     kernelParams = [
