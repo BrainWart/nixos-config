@@ -53,16 +53,20 @@ in {
     )
   ) {});
 
+  boot.loader.grub.extraGrubInstallArgs = [
+    "--modules=acpi"
+  ];
+
   boot.initrd = {
     systemd = {
       enable = false;
       emergencyAccess = true;
     };
-    extraFiles = {
-      "lib" = {
-        source = config.hardware.firmware;
-      };
-    };
+    # extraFiles = {
+    #   "lib" = {
+    #     source = config.hardware.firmware;
+    #   };
+    # };
 
     kernelModules = [
       # # HyperV
@@ -73,7 +77,7 @@ in {
       # Core
       "qnoc-sc8280xp"
       # NVME
-      "phy_qcom_qmp_pcie" "nvme" # "pcie_qcom" # not a module in this version
+      "phy_qcom_qmp_pcie" "nvme" "pcie_qcom"
       # Keyboard
       "i2c_qcom_geni" "i2c_hid_of" "hid_generic"
       # Display
@@ -113,7 +117,7 @@ in {
           HWSPINLOCK_QCOM =                          yes; # note<'X13s set to y'>
           INTERCONNECT_QCOM_SC8280XP =               yes; # note<'X13s set to y'>
           NVMEM_QCOM_QFPROM =                        yes; # note<'X13s set to y'>
-          PCIE_QCOM =                                yes; # note<'X13s set to m'>
+          PCIE_QCOM =                                module; # note<'X13s set to m'>
           PINCTRL_QCOM_SPMI_PMIC =                   module; # note<'X13s set to m'>
           PINCTRL_SC8280XP =                         yes; # note<'X13s set to y'>
           QCOM_AOSS_QMP =                            yes; # note<'X13s set to y'>
