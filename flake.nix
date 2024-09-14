@@ -2,7 +2,7 @@
   description = "NixOS flake build";
 
   inputs = {
-    nixpkgs.url = "github:BrainWart/nixpkgs/iso-dt-selectors";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     x13s = {
       url = "github:BrainWart/x13s-nixos";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -11,8 +11,8 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    systems.url = "github:nix-systems/default-linux";
     vscode-remote-workaround.url = "github:K900/vscode-remote-workaround";
+    systems.url = "github:nix-systems/default-linux";
     flake-utils = {
       url = "github:numtide/flake-utils";
       inputs.systems.follows = "systems";
