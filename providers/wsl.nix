@@ -4,7 +4,7 @@ let
   npiperelay = pkgs.callPackage ../pkgs/npiperelay.nix {};
   nixwsl = fetchGit {
     url = "https://github.com/nix-community/NixOS-WSL.git";
-    rev = "31346e340e828f79be23d9c83ec1674b152f17bc";
+    rev = "34b95b3962f5b3436d4bae5091d1b2ff7c1eb180";
   };
 in
 {
@@ -17,8 +17,16 @@ in
   wsl.defaultUser = "mcginnisc";
   wsl.interop.register = true;
 
+  programs.nix-ld = {
+    enable = true;
+    package = pkgs.nix-ld-rs;
+  };
+
   environment.systemPackages = with pkgs; [
     wslu
+    wget
+    direnv
+    nixpkgs-fmt
     (writeScriptBin "ssh-agent" ''
       #!${bash}/bin/bash
 
