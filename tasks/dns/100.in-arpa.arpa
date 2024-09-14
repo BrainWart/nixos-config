@@ -10,7 +10,7 @@ $TTL	3h
 ns1	IN	A	100.126.190.39
 11.71.116.100.in-addr.arpa.	IN	PTR	pve.mcginnis.internal.
 79.242.87.100.in-addr.arpa.	IN	PTR	ds718.mcginnis.internal.
-109.240.69.100.in-addr.arpa.	IN	PTR	kube.mcginnis.internal.
-109.240.69.100.in-addr.arpa.	IN	PTR	gitea.mcginnis.internal.
-109.240.69.100.in-addr.arpa.	IN	PTR	drone.mcginnis.internal.
+18.85.107.100.in-addr.arpa.	IN	PTR	kube.mcginnis.internal.
+18.85.107.100.in-addr.arpa.	IN	PTR	gitea.mcginnis.internal.
+18.85.107.100.in-addr.arpa.	IN	PTR	drone.mcginnis.internal.
 

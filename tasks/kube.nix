@@ -14,10 +14,10 @@
     role = "server";
     extraFlags = toString [
       "--data-dir /persist/k3s"
-      "--node-external-ip 100.69.240.109"
-      "--node-ip 100.69.240.109"
+      "--node-external-ip 100.107.85.18"
+      "--node-ip 100.107.85.18"
       "--flannel-iface=tailscale0"
-      "--advertise-address 100.69.240.109"
+      "--advertise-address 100.107.85.18"
     ];
   };
 

@@ -11,9 +11,9 @@ $TTL	3h
 ns1	IN	A	100.126.190.39
 pve	IN	A	100.116.71.11
 ds718	IN	A	100.87.242.79
-kube	IN	A	100.69.240.109
-gitea	IN	A	100.69.240.109
-drone	IN	A	100.69.240.109
+kube	IN	A	100.107.85.18
+gitea	IN	A	100.107.85.18
+drone	IN	A	100.107.85.18
 
 idm	IN	CNAME	ds718.mcginnis.internal.
 ha	IN	CNAME	ds718.mcginnis.internal.
