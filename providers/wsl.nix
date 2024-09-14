@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  npiperelay = pkgs.callPackage ../pkgs/npiperelay.nix {};
+  npiperelay = pkgs.callPackage ../pkgs/npiperelay.nix { };
   nixwsl = fetchGit {
     url = "https://github.com/nix-community/NixOS-WSL.git";
     rev = "34b95b3962f5b3436d4bae5091d1b2ff7c1eb180";
@@ -44,15 +44,16 @@ in
     '')
   ];
   vscode-remote-workaround.enable = true;
-  wsl.extraBin = 
+  wsl.extraBin =
     map
-    (name: { inherit name; src = "${pkgs.coreutils}/bin/${name}"; })
-    [ "uname" "dirname" "rm" "mkdir" "wc" "date" "mv" "sleep" "readlink" "cat" ]
-  ++ [
-    (let name = "tar"; in { inherit name; src = "${pkgs.gnutar}/bin/${name}"; })
-    (let name = "gzip"; in { inherit name; src = "${pkgs.gzip}/bin/${name}"; })
-    (let name = "find"; in { inherit name; src = "${pkgs.findutils}/bin/${name}"; })
-    (let name = "getconf"; in { inherit name; src = "${pkgs.getconf}/bin/${name}"; })
-    (let name = "sed"; in { inherit name; src = "${pkgs.gnused}/bin/${name}"; })
-  ];
+      (name: { inherit name; src = "${pkgs.coreutils}/bin/${name}"; })
+      [ "uname" "dirname" "rm" "mkdir" "wc" "date" "mv" "sleep" "readlink" "cat" ]
+    ++ [
+      (let name = "tar"; in { inherit name; src = "${pkgs.gnutar}/bin/${name}"; })
+      (let name = "gzip"; in { inherit name; src = "${pkgs.gzip}/bin/${name}"; })
+      (let name = "find"; in { inherit name; src = "${pkgs.findutils}/bin/${name}"; })
+      (let name = "getconf"; in { inherit name; src = "${pkgs.getconf}/bin/${name}"; })
+      (let name = "sed"; in { inherit name; src = "${pkgs.gnused}/bin/${name}"; })
+      (let name = "direnv"; in { inherit name; src = "${pkgs.direnv}/bin/${name}"; })
+    ];
 }
