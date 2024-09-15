@@ -2,8 +2,8 @@
   imports = [
     inputs.disko.nixosModules.disko
     ../providers/pve.nix
-    # ../tasks/nvidia.nix
-    # ../tasks/ollama.nix
+    ../tasks/nvidia.nix
+    ../tasks/ollama.nix
   ];
 
   networking.hostName = "ollama";
