@@ -15,13 +15,13 @@
       {
         CUDA_PATH = "${pkgs.cudatoolkit}";
       } // {
-      OLLAMA_ORIGINS = "http://192.168.20.87:3000";
+      OLLAMA_ORIGINS = "http://192.168.20.208:3000";
     };
   };
   services.nextjs-ollama-llm-ui = {
     enable = true;
     hostname = "0.0.0.0";
-    ollamaUrl = "http://192.168.20.87:${toString config.services.ollama.port}";
+    ollamaUrl = "http://192.168.20.208:${toString config.services.ollama.port}";
   };
 
   networking.firewall.allowedTCPPorts = [
