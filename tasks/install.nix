@@ -19,7 +19,7 @@
       StandardOutput = "tty";
       StandardError = "tty";
       TTYPath = "/dev/tty1";
-      TTYReset = "yes";
+      TTYReset = "no";
       TTYHangup = "yes";
       TTYVTDisallocate = "yes";
     };
