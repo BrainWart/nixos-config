@@ -4,6 +4,8 @@
     ../providers/wsl.nix
   ];
 
+  system.includeBuildDependencies = true;
+
   networking.hostName = "wsl";
 }
 

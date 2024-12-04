@@ -5,8 +5,8 @@ in {
   imports = [
    (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
    # (modulesPath + "/installer/cd-dvd/channel.nix")
-    ../tasks/tailscale.nix
-    ../tasks/recover-abb.nix
+    # ../tasks/tailscale.nix
+    # ../tasks/recover-abb.nix
   ];
 
   system.stateVersion = "24.11";
@@ -41,14 +41,14 @@ in {
     buildLinux (
       args // {
         kernelPatches = (args.kernelPatches or [ ]);
-        extraMeta.branch = "6.11.0-rc6";
+        extraMeta.branch = "6.12.0";
         src = pkgs.fetchFromGitHub {
           owner = "jhovold";
           repo = "linux";
-          rev = "wip/sc8280xp-6.11-rc6";
-          hash = "sha256-p2rP8fErEnrlrkl2l4ZfnWOG2U/ohAC9blx+sTpU4+I=";
+          rev = "wip/sc8280xp-6.12";
+          hash = "sha256-F9PtGVeT3i6EYt3uNp5PaFKPXiWOe6T8Y5U5WzXHauE=";
         };
-        version = "6.11.0-rc6";
+        version = "6.12.0";
       }
     )
   ) {});
@@ -75,7 +75,8 @@ in {
 
       # x13s ubuntu concept
       # Core
-      "qnoc-sc8280xp"
+      "qnoc-sc8280xp" "qcom_hwspinlock"
+      "uio_pdrv_genirq"
       # NVME
       "phy_qcom_qmp_pcie" "nvme" "pcie_qcom"
       # Keyboard

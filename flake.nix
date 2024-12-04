@@ -2,7 +2,8 @@
   description = "NixOS flake build";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "git+file:///home/mcginnisc/source/github.com/brainwart/nixpkgs";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     x13s = {
       url = "github:BrainWart/x13s-nixos";
       inputs.nixpkgs.follows = "nixpkgs";
