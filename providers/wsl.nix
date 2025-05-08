@@ -43,7 +43,7 @@ in
       ${socat}/bin/socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"${npiperelay}/bin/npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork
     '')
   ];
-  vscode-remote-workaround.enable = true;
+  # vscode-remote-workaround.enable = true;
   wsl.extraBin =
     map
       (name: { inherit name; src = "${pkgs.coreutils}/bin/${name}"; })
