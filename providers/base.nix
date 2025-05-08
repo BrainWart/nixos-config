@@ -53,7 +53,7 @@
     security.sudo.wheelNeedsPassword = false;
     nix.settings.trusted-users = [ "@wheel" ];
 
-    nix.extraOptions = "experimental-features = nix-command flakes repl-flake";
+    nix.extraOptions = "experimental-features = nix-command flakes";
 
     system.stateVersion = "23.11";
   };
