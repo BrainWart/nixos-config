@@ -4,7 +4,7 @@ let
   npiperelay = pkgs.callPackage ../pkgs/npiperelay.nix { };
   nixwsl = fetchGit {
     url = "https://github.com/nix-community/NixOS-WSL.git";
-    rev = "34b95b3962f5b3436d4bae5091d1b2ff7c1eb180";
+    rev = "0b2b8b31f69f24e9a75b4b18a32c771a48612d5e"; # 2411.6.0
   };
 in
 {
