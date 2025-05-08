@@ -10,13 +10,13 @@
 let
   description = "Access Windows named pipes from WSL";
 
-  version = "0.0.1";
+  version = "1.7.1";
   src = applyPatches {
     src = fetchFromGitHub {
       owner = "albertony";
       repo = "npiperelay";
-      rev = "fork";
-      sha256 = "sha256-4N11vz1JjPYuwukqt6Zw1aL7bDOihMEkcjXuSJl2juY=";
+      rev = "v${version}";
+      sha256 = "sha256-xhufZaDwCrVbebh5oBq64ekmvlgTcHQsRVVz9WazFEQ=";
     };
 
     patches = [ ];
@@ -44,7 +44,7 @@ in
   ];
 
   postBuild = ''
-    dir=$GOPATH/bin/${GOOS}_${GOARCH}
+    dir=$GOPATH/bin/$GOOS_$GOARCH
     if [[ -n "$(shopt -s nullglob; echo $dir/*)" ]]; then
       mv $dir/* $dir/..
     fi
@@ -61,5 +61,7 @@ in
     platforms = [ "x86_64-linux" "aarch64-linux" ];
   };
 }).overrideAttrs (old: old // {
-  inherit GOOS GOARCH;
+  env = {
+    inherit GOOS GOARCH;
+  };
 })
