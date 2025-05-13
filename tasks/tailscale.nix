@@ -15,11 +15,14 @@
     script = with pkgs; ''
       mkdir -p /persist/tailscale
 
-      sleep 5
+      status="NoState"
 
-      tailscaleStatus="$(${tailscale}/bin/tailscale status -json)"
-      echo "$tailscaleStatus"
-      status="$(echo "$tailscaleStatus" | ${jq}/bin/jq -r .BackendState)"
+      while [ $status = 'NoState' ] ; do
+        sleep 0.5
+        tailscaleStatus="$(${tailscale}/bin/tailscale status -json)"
+        status="$(echo "$tailscaleStatus" | ${jq}/bin/jq -r .BackendState)"
+        echo "status: $status"
+      done
 
       if [ $status = "Running" ]; then
         exit 0
