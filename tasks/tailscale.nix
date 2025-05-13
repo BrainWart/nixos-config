@@ -17,7 +17,9 @@
 
       sleep 5
 
-      status="$(${tailscale}/bin/tailscale status -json | ${jq}/bin/jq -r .BackendState)"
+      tailscaleStatus="$(${tailscale}/bin/tailscale status -json)"
+      echo "$tailscaleStatus"
+      status="$(echo "$tailscaleStatus" | ${jq}/bin/jq -r .BackendState)"
 
       if [ $status = "Running" ]; then
         exit 0
