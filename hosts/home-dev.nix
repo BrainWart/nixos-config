@@ -20,8 +20,9 @@
   #   '';
   # };
 
-  # environment.systemPackages = [
-  #   pkgs.firefox
-  # ];
+  environment.systemPackages = [
+    pkgs.firefox
+    pkgs.kubectl
+  ];
 }
 
