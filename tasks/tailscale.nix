@@ -17,7 +17,7 @@
 
       status="NoState"
 
-      while [ $status = 'NoState' ] ; do
+      while [ $status = 'NoState' ] || [ $status = 'Starting' ] ; do
         sleep 0.5
         tailscaleStatus="$(${tailscale}/bin/tailscale status -json)"
         status="$(echo "$tailscaleStatus" | ${jq}/bin/jq -r .BackendState)"
