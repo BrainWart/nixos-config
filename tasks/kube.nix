@@ -14,7 +14,7 @@
 
   services.k3s = {
     enable = true;
-    gracefulNodeShutdown = true;
+    gracefulNodeShutdown.enable = true;
     role = "server";
     extraFlags = toString [
       "--data-dir /persist/k3s"
