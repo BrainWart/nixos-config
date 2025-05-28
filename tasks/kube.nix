@@ -12,6 +12,10 @@
     ];
   };
 
+  networking.resolvconf.extraConfig = ''
+    name_servers="100.126.190.39"
+  '';
+
   services.k3s = {
     enable = true;
     gracefulNodeShutdown.enable = true;

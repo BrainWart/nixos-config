@@ -28,7 +28,7 @@
     umount /mnt
     rmdir /mnt
   '';
-  boot.kernelParams = [ "console=ttyS0,115200" ];
+  boot.kernelParams = [ "console=ttyS0,115200" "console=tty0" ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
   boot.loader.systemd-boot.enable = true;
