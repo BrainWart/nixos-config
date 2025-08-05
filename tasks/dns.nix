@@ -7,6 +7,9 @@
         log . "dev.mcginnis.internal {remote}:{port} - {>id} \"{type} {class} {name} {proto} {size} {>do} {>bufsize}\" {rcode} {>rflags} {rsize} {duration}"
         errors
         file ${./dns/dev.mcginnis.internal}
+        template ANY ANY {
+            rcode NXDOMAIN
+        }
       }
       
       mcginnis.internal {
@@ -19,6 +22,9 @@
           100.107.85.18 kube.mcginnis.internal gitea.mcginnis.internal drone.mcginnis.internal kube gitea drone
           100.103.31.83 home-dev.mcginnis.internal home-dev
           fallthrough
+        }
+        template ANY ANY {
+            rcode NXDOMAIN
         }
       }
 
