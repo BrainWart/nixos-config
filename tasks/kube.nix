@@ -25,6 +25,7 @@
       "--node-external-ip 100.107.85.18"
       "--node-ip 100.107.85.18"
       "--flannel-iface=tailscale0"
+      "--flannel-ipv6-masq"
       "--advertise-address 100.107.85.18"
     ];
   };
