@@ -8,9 +8,6 @@
         errors
         file ${./dns/dev.mcginnis.internal} {
         }
-        template ANY ANY {
-          rcode NXDOMAIN
-        }
       }
       
       mcginnis.internal {
@@ -22,9 +19,6 @@
           100.87.242.79 ds718.mcginnis.internal idm.mcginnis.internal ha.mcginnis.internal grafana.mcginnis.internal ds718 idm ha grafana
           100.107.85.18 kube.mcginnis.internal gitea.mcginnis.internal drone.mcginnis.internal kube gitea drone
           100.103.31.83 home-dev.mcginnis.internal home-dev
-        }
-        template ANY ANY {
-            rcode NXDOMAIN
         }
       }
 
