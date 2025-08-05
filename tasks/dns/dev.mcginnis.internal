@@ -1,3 +1,4 @@
+$ORIGIN dev.mcginnis.internal.
 $TTL	3h
 @	IN	SOA	ns1	admin	(
 				1	; Serial

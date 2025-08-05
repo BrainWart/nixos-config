@@ -6,8 +6,7 @@
       dev.mcginnis.internal {
         log . "dev.mcginnis.internal {remote}:{port} - {>id} \"{type} {class} {name} {proto} {size} {>do} {>bufsize}\" {rcode} {>rflags} {rsize} {duration}"
         errors
-        file ${./dns/dev.mcginnis.internal} {
-        }
+        file ${./dns/dev.mcginnis.internal}
       }
       
       mcginnis.internal {
