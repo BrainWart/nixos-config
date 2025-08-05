@@ -4,10 +4,14 @@
     enable = true;
     config = ''
       dev.mcginnis.internal {
+        log . "dev.mcginnis.internal {remote}:{port} - {>id} \"{type} {class} {name} {proto} {size} {>do} {>bufsize}\" {rcode} {>rflags} {rsize} {duration}"
+        errors
         file ${./dns/dev.mcginnis.internal}
       }
       
       mcginnis.internal {
+        log . "mcginnis.internal {remote}:{port} - {>id} \"{type} {class} {name} {proto} {size} {>do} {>bufsize}\" {rcode} {>rflags} {rsize} {duration}"
+        errors
         hosts {
           100.126.190.39 dns.mcginnis.internal ns1.mcginnis.internal dns
           100.116.71.11 pve.mcginnis.internal pve
@@ -19,6 +23,8 @@
       }
 
       . {
+        log . ". {remote}:{port} - {>id} \"{type} {class} {name} {proto} {size} {>do} {>bufsize}\" {rcode} {>rflags} {rsize} {duration}"
+        errors
         cache
         forward . 1.1.1.1 8.8.8.8
       }
