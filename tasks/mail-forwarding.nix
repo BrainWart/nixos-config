@@ -13,6 +13,8 @@
       smtp_sasl_auth_enable = "no";
       smtp_tls_security_level = "encrypt";
       smtp_tls_wrappermode = "yes";
+      smtp_always_send_ehlo = "yes";
+      smtp_helo_name = "home-dev";
     };
     extraConfig = ''
       inet_protocols = ipv4
