@@ -8,10 +8,10 @@
       mcginnis.dev   smtp:[smtp-relay.gmail.com]:465
       *              discard:
     '';
-    extraConfig = ''
-      smtp_sasl_auth_enable = no
-      smtp_tls_security_level = encrypt
-    '';
+    submissionOptions = {
+      smtp_sasl_auth_enable = "no";
+      smtp_tls_security_level = "encrypt";
+    };
   };
 
 })
