@@ -15,7 +15,7 @@
       smtp_tls_wrappermode = "yes";
     };
     extraConfig = ''
-      inert_protocols = ipv4
+      inet_protocols = ipv4
     '';
   };
 
