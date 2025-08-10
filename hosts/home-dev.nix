@@ -3,6 +3,7 @@
     inputs.disko.nixosModules.disko
     ../providers/pve.nix
     ../tasks/tailscale.nix
+    ../tasks/mail-forwarding.nix
   ];
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
