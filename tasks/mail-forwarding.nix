@@ -14,6 +14,9 @@
       smtp_tls_security_level = "encrypt";
       smtp_tls_wrappermode = "yes";
     };
+    extraConfig = ''
+      inert_protocols = ipv4
+    '';
   };
 
 })
