@@ -8,7 +8,7 @@
       mcginnis.dev   smtp:[smtp-relay.gmail.com]:465
       *              discard:
     '';
-    # enableSubmissions = true;
+    enableSubmissions = true;
     submissionsOptions = {
       smtp_sasl_auth_enable = "no";
       smtp_tls_security_level = "encrypt";
