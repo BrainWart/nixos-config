@@ -21,6 +21,8 @@
   #   '';
   # };
 
+  virtualisation.podman.enable = true;
+
   environment.systemPackages = [
     pkgs.firefox
     pkgs.kubectl
