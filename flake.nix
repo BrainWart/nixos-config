@@ -50,6 +50,7 @@
         packages = {
           inherit nixosConfigurations;
           npiperelay = pkgs.callPackage ./pkgs/npiperelay.nix {};
+          code-server = pkgs.callPackage ./pkgs/code-server/default.nix {};
         };
       }
     )) // {

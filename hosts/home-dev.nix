@@ -49,6 +49,9 @@
     group = "users";
     disableUpdateCheck = true;
     disableTelemetry = true;
+    extraPackages = [
+      pkgs.nix-direnv
+    ];
     host = "127.0.0.1";
     port = 4444;
     hashedPassword = "$argon2i$v=19$m=4096,t=3,p=1$aWF2WCs4UTlidzNaQTFlQytRVlRpaE1zeEZjPQ$a49d0Q5wN/v7cGFcIl9DaSGvtS8PKiLz5pfYU+HzgYY";
