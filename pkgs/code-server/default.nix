@@ -93,6 +93,7 @@ stdenv.mkDerivation (finalAttrs: {
 
     nativeBuildInputs = [
       yarn'
+      nodejs
       git
       cacert
     ];
@@ -103,6 +104,7 @@ stdenv.mkDerivation (finalAttrs: {
       export HOME=$PWD
       export GIT_SSL_CAINFO="${cacert}/etc/ssl/certs/ca-bundle.crt"
 
+      npm 
       yarn --cwd "./vendor" install --modules-folder modules --ignore-scripts --frozen-lockfile
 
       yarn config set yarn-offline-mirror $out
