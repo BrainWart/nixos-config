@@ -50,7 +50,7 @@
     disableUpdateCheck = true;
     disableTelemetry = true;
     extraPackages = [
-      pkgs.nix-direnv
+      pkgs.direnv
     ];
     host = "127.0.0.1";
     port = 4444;
