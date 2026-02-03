@@ -18,6 +18,7 @@
       url = "github:numtide/flake-utils";
       inputs.systems.follows = "systems";
     };
+    nixos-hardware.url = "github:BrainWart/nixos-hardware/x13s-updates";
   };
 
   outputs = { self, nixpkgs, flake-utils, ... } @ inputs:

@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1757255839,
-        "narHash": "sha256-XH33B1X888Xc/xEXhF1RPq/kzKElM0D5C9N6YdvOvIc=",
+        "lastModified": 1769524058,
+        "narHash": "sha256-zygdD6X1PcVNR2PsyK4ptzrVEiAdbMqLos7utrMDEWE=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "c8a0e78d86b12ea67be6ed0f7cae7f9bfabae75a",
+        "rev": "71a3fc97d80881e91710fe721f1158d3b96ae14d",
         "type": "github"
       },
       "original": {
@@ -117,13 +117,29 @@
         "type": "github"
       }
     },
+    "nixos-hardware": {
+      "locked": {
+        "lastModified": 1770088319,
+        "narHash": "sha256-s2MAyIqZ2cTK3Z33ZxbXPqI9ehAVkrjN9o9Lx5E2T70=",
+        "owner": "BrainWart",
+        "repo": "nixos-hardware",
+        "rev": "5efb9a74437b65e6ec7e764314d79754815a24b6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "BrainWart",
+        "ref": "x13s-updates",
+        "repo": "nixos-hardware",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1757068644,
-        "narHash": "sha256-NOrUtIhTkIIumj1E/Rsv1J37Yi3xGStISEo8tZm3KW4=",
+        "lastModified": 1770019141,
+        "narHash": "sha256-VKS4ZLNx4PNrABoB0L8KUpc1fE7CLpQXQs985tGfaCU=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "8eb28adfa3dc4de28e792e3bf49fcf9007ca8ac9",
+        "rev": "cb369ef2efd432b3cdf8622b0ffc0a97a02f3137",
         "type": "github"
       },
       "original": {
@@ -194,6 +210,7 @@
       "inputs": {
         "disko": "disko",
         "flake-utils": "flake-utils",
+        "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "systems": "systems",
         "vscode-remote-workaround": "vscode-remote-workaround",
@@ -273,11 +290,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1733585906,
-        "narHash": "sha256-rS8ptnJmVzAptMz4Zivr7oYNKnesa6b1bghRA3vtZco=",
+        "lastModified": 1764620479,
+        "narHash": "sha256-MpUhTr14nK6iJ8EHriLjYgW+mdKBFIKj37vC/pENVkA=",
         "owner": "BrainWart",
         "repo": "x13s-nixos",
-        "rev": "0413fb351a46350a8f7000a3e4f43024c935ec14",
+        "rev": "3e04902de7d87c5e5c56df0237443de11222c964",
         "type": "github"
       },
       "original": {

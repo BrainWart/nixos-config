@@ -104,25 +104,24 @@ stdenv.mkDerivation (finalAttrs: {
       export HOME=$PWD
       export GIT_SSL_CAINFO="${cacert}/etc/ssl/certs/ca-bundle.crt"
 
-      npm 
-      yarn --cwd "./vendor" install --modules-folder modules --ignore-scripts --frozen-lockfile
+      export npm_config_cache=$out
 
-      yarn config set yarn-offline-mirror $out
-      find "$PWD" -name "yarn.lock" -printf "%h\n" | \
-        xargs -I {} yarn --cwd {} \
-          --frozen-lockfile --ignore-scripts --ignore-platform \
-          --ignore-engines --no-progress --non-interactive
+      # yarn --cwd "./vendor" install --modules-folder modules --ignore-scripts --frozen-lockfile
+      # npm install ./vender
 
-      find ./lib/vscode -name "yarn.lock" -printf "%h\n" | \
-        xargs -I {} yarn --cwd {} \
-          --ignore-scripts --ignore-engines
+      # yarn config set yarn-offline-mirror $out
+      find "$PWD" -name "package-lock.json" -printf "%h\n" | \
+        xargs -I {} npm install {}
+
+      find ./lib/vscode -name "package-lock.json" -printf "%h\n" | \
+        xargs -I {} npm install {}
 
       runHook postBuild
     '';
 
     outputHashMode = "recursive";
     outputHashAlgo = "sha256";
-    outputHash = "sha256-3xDinhLSZJoz7N7Z/+ttDLh82fwyunOTeSE3ULOZcHA=";
+    outputHash = "sha256-4xDinhLSZJoz7N7Z/+ttDLh82fwyunOTeSE3ULOZcHA=";
   };
 
   nativeBuildInputs = [
@@ -180,6 +179,7 @@ stdenv.mkDerivation (finalAttrs: {
     '') defaultYarnOpts}
 
     # set offline mirror to yarn cache we created in previous steps
+    export npm_config_cache="${finalAttrs.yarnCache}"
     yarn --offline config set yarn-offline-mirror "${finalAttrs.yarnCache}"
 
     # skip unnecessary electron download
@@ -266,6 +266,7 @@ stdenv.mkDerivation (finalAttrs: {
   + ''
 
     # Build binary packages (argon2, node-pty, etc).
+    export npm_config_cache="${finalAttrs.yarnCache}"
     echo '::::::::::: 267' >&2
     npm rebuild --offline
     echo '::::::::::: 269' >&2

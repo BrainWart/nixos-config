@@ -23,10 +23,10 @@ in {
    # (modulesPath + "/installer/cd-dvd/channel.nix")
    # ../tasks/tailscale.nix
    # ../tasks/recover-abb.nix
-   inputs.x13s.nixosModules.aarch64-linux.default
+   # inputs.x13s.nixosModules.aarch64-linux.default
   ];
 
-  nixos-x13s.enable = true;
+  # nixos-x13s.enable = true;
   nixpkgs.config.allowUnfree = true;
 
   system.stateVersion = "24.11";
@@ -57,12 +57,12 @@ in {
   isoImage.appendToMenuLabel = " Recovery with Synology ABB";
 
   # boot.kernelPackages = pkgs.linuxPackages_latest;
-  nixos-x13s.kernel = inputs.x13s.packages.${pkgs.system}.x13s.linux_jhovold.override { 
-    extraStructuredConfig = {
-      CONFIG_PHY_QCOM_EUSB2 = pkgs.lib.kernel.yes;
-      CONFIG_PHY_QCOM_EUSB2_REPEATER = pkgs.lib.kernel.yes;
-    };
-  };
+  # nixos-x13s.kernel = inputs.x13s.packages.${pkgs.system}.x13s.linux_jhovold.override { 
+  #   extraStructuredConfig = {
+  #     CONFIG_PHY_QCOM_EUSB2 = pkgs.lib.kernel.yes;
+  #     CONFIG_PHY_QCOM_EUSB2_REPEATER = pkgs.lib.kernel.yes;
+  #   };
+  # };
 
   boot.loader.grub.enable = pkgs.lib.mkForce false;
   # boot.loader.grub.extraGrubInstallArgs = [

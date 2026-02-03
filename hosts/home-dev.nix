@@ -58,16 +58,18 @@
   };
   networking.firewall.allowedTCPPorts = [ 80 443 4444 ];
 
-  # services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.enable = true;
+  services.xserver.desktopManager.xfce.enable = true;
   # services.xserver.displayManager.lightdm.enable = true;
-  # users.users.mcginnisc.linger = true;
-  # services.xrdp = {
-  #   enable = true;
-  #   defaultWindowManager = "startplasma-x11";
-  #   extraConfDirCommands = ''
-  #     substituteInPlace $out/xrdp.ini --replace port=-1 port=ask-1
-  #   '';
-  # };
+  users.users.mcginnisc.linger = true;
+  services.xrdp = {
+    enable = true;
+    defaultWindowManager = "xfce4-session";
+    openFirewall = true;
+    #extraConfDirCommands = ''
+    #  substituteInPlace $out/xrdp.ini --replace port=-1 port=ask-1
+    #'';
+  };
 
   virtualisation.podman.enable = true;
 
