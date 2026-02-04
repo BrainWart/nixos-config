@@ -119,11 +119,11 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1770167568,
-        "narHash": "sha256-vTCJhBacAfpmXMMk+WOKrok1S86pix79vGnByVkAzYU=",
+        "lastModified": 1770176001,
+        "narHash": "sha256-g7kxn0uIUBBIE6v1UzXncOwaU/GXkfzxCKkeIphFrQg=",
         "owner": "BrainWart",
         "repo": "nixos-hardware",
-        "rev": "b7c35f44e2c788a74a5fd943c7372b0e5801163f",
+        "rev": "2199ff505aa83fc8720686cd914c4517ed846998",
         "type": "github"
       },
       "original": {
