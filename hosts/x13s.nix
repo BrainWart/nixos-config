@@ -24,8 +24,9 @@
 
   networking.hostName = "x13s";
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.configurationLimit = 5;
+  boot.loader.grub.enable = true;
+  # boot.loader.systemd-boot.enable = true;
+  # boot.loader.systemd-boot.configurationLimit = 5;
   hardware.bluetooth.enable = true;
   networking.networkmanager.enable = true;
   systemd.tpm2.enable = false;
