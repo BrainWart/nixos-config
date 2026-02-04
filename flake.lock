@@ -119,8 +119,8 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1770245032,
-        "narHash": "sha256-msF5UylpUyIgs6MZXxT6zIiExP3PvHju7hcCRFESgL8=",
+        "lastModified": 1770249021,
+        "narHash": "sha256-tUt/rSN9loPoXxFJ8G9UTYeyE7r8gnQGrbaobbwFE44=",
         "path": "/home/mcginnisc/source/nixos-hardware",
         "type": "path"
       },

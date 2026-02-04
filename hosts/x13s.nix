@@ -25,6 +25,8 @@
   networking.hostName = "x13s";
 
   boot.loader.grub.enable = true;
+  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.device = "/dev/disk/by-partlabel/disk-main-ESP";
   # boot.loader.systemd-boot.enable = true;
   # boot.loader.systemd-boot.configurationLimit = 5;
   hardware.bluetooth.enable = true;
