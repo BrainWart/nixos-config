@@ -10,18 +10,35 @@
 
   networking.hostName = "x13s";
 
+  boot.loader.systemd-boot.enable = true;
+  hardware.bluetooth.enable = true;
+  networking.networkmanager.enable = true;
+  systemd.tpm2.enable = false;
+
   programs.regreet.enable = true;
   programs.niri.enable = true;
-  programs.waybar.enable = true;
   security.polkit.enable = true; # polkit
   services.gnome.gnome-keyring.enable = true; # secret service
   security.pam.services.swaylock = {};
-  environment.systemPackages = with pkgs; [ alacritty fuzzel swaylock mako swayidle firefox ];
-  networking.networkmanager.enable = true;
+  environment.systemPackages = with pkgs; [
+    alacritty
+    fuzzel
+    swaylock
+    mako
+    waybar
+    swayidle
+    firefox
+    git
+  ];
+  fonts.packages = with pkgs; [
+    fira-code
+    fira-code-symbols
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
+  ];
+
   users.users.mcginnisc.extraGroups = [ "networkmanager" ];
-
-  boot.loader.systemd-boot.enable = true;
-
 
   disko.devices = {
     disk = {
