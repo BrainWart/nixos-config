@@ -119,18 +119,14 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1770243242,
-        "narHash": "sha256-KxDWiXcl+Mxe3mcpdGq2mLsxDOk/xw8IbEVU9LzC96k=",
-        "owner": "BrainWart",
-        "repo": "nixos-hardware",
-        "rev": "12bf2517dcc27d0fe0fc4847d9247fe0ec1eef81",
-        "type": "github"
+        "lastModified": 1770245032,
+        "narHash": "sha256-msF5UylpUyIgs6MZXxT6zIiExP3PvHju7hcCRFESgL8=",
+        "path": "/home/mcginnisc/source/nixos-hardware",
+        "type": "path"
       },
       "original": {
-        "owner": "BrainWart",
-        "ref": "x13s-updates",
-        "repo": "nixos-hardware",
-        "type": "github"
+        "path": "/home/mcginnisc/source/nixos-hardware",
+        "type": "path"
       }
     },
     "nixpkgs": {
