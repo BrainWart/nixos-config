@@ -48,6 +48,7 @@
     swayidle
     firefox
     git
+    git-credential-oauth
   ];
   fonts.packages = with pkgs; [
     fira-code
