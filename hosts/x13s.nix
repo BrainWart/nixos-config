@@ -16,7 +16,7 @@
   security.polkit.enable = true; # polkit
   services.gnome.gnome-keyring.enable = true; # secret service
   security.pam.services.swaylock = {};
-  environment.systemPackages = with pkgs; [ alacritty fuzzel swaylock mako swayidle nmcli firefox ];
+  environment.systemPackages = with pkgs; [ alacritty fuzzel swaylock mako swayidle firefox ];
   networking.networkmanager.enable = true;
   users.users.mcginnisc.extraGroups = [ "networkmanager" ];
 
