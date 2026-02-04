@@ -47,7 +47,7 @@
 
     system.autoUpgrade = {
       flake = "github:brainwart/nixos-config";
-      enable = true;
+      # enable = true;
     };
 
     security.sudo.wheelNeedsPassword = false;
@@ -55,6 +55,6 @@
 
     nix.extraOptions = "experimental-features = nix-command flakes";
 
-    system.stateVersion = "23.11";
+    # system.stateVersion = "23.11";
   };
 }

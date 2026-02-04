@@ -1,7 +1,9 @@
 { inputs, modulesPath, pkgs, config, ... }:
 {
   imports = [
+    inputs.disko.nixosModules.disko
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x13s
+    ../providers/base.nix
   ];
 
   system.stateVersion = "25.11";
@@ -12,6 +14,7 @@
   programs.niri.enable = true;
   programs.waybar.enable = true;
 
+  boot.loader.systemd-boot.enable = true;
 
   disko.devices = {
     disk = {
