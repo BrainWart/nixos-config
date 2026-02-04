@@ -6,11 +6,26 @@
     ../providers/base.nix
   ];
 
+  programs.dconf.profiles.user.databases = [
+    {
+      # lockAll = true; # prevents overriding
+      settings = {
+        "org/gnome/desktop/interface" = {
+          color-scheme = "prefer-dark";
+        };
+        "org/gnome/desktop/input-sources" = {
+          xkb-options = [ "ctrl:nocaps" ];
+        };
+      };
+    }
+  ];
+
   system.stateVersion = "25.11";
 
   networking.hostName = "x13s";
 
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 5;
   hardware.bluetooth.enable = true;
   networking.networkmanager.enable = true;
   systemd.tpm2.enable = false;
