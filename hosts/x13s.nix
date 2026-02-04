@@ -13,8 +13,15 @@
   programs.regreet.enable = true;
   programs.niri.enable = true;
   programs.waybar.enable = true;
+  security.polkit.enable = true; # polkit
+  services.gnome.gnome-keyring.enable = true; # secret service
+  security.pam.services.swaylock = {};
+  environment.systemPackages = with pkgs; [ alacritty fuzzel swaylock mako swayidle nmcli ];
+  networking.networkmanager.enable = true;
+  users.users.mcginnisc.extraGroups = [ "networkmanager" ];
 
   boot.loader.systemd-boot.enable = true;
+
 
   disko.devices = {
     disk = {
