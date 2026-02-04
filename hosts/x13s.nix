@@ -32,6 +32,10 @@
 
   programs.regreet.enable = true;
   programs.niri.enable = true;
+  programs.vim = {
+    enable = true;
+    defaultEditor = true;
+  };
   security.polkit.enable = true; # polkit
   services.gnome.gnome-keyring.enable = true; # secret service
   security.pam.services.swaylock = {};
