@@ -24,14 +24,13 @@
 
   networking.hostName = "x13s";
 
-  hardware.lenovo.x13s.wifiMac = "00:03:7f:12:05:4b";
-  hardware.lenovo.x13s.bluetoothMac = "12:FD:57:80:32:5F";
-
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 5;
   hardware.bluetooth.enable = true;
   networking.networkmanager.enable = true;
   systemd.tpm2.enable = false;
+  hardware.deviceTree.filter = "*x13s*";
+  time.timeZone = "America/New_York";
 
   programs.regreet.enable = true;
   programs.niri.enable = true;
