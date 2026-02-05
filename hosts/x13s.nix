@@ -51,6 +51,7 @@
     firefox
     git
     git-credential-oauth
+    tailscale
   ];
   fonts.packages = with pkgs; [
     fira-code
@@ -62,6 +63,15 @@
   ];
 
   users.users.mcginnisc.extraGroups = [ "networkmanager" ];
+
+  services.tailscale.enable = true;
+  networking.firewall = {
+    enable = true;
+    checkReversePath = "loose";
+    trustedInterfaces = [ config.services.tailscale.interfaceName ];
+    allowedUDPPorts = [ config.services.tailscale.port ];
+    allowedTCPPorts = [ ] ++ config.services.openssh.ports;
+  };
 
   disko.devices = {
     disk = {
