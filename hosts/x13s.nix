@@ -24,11 +24,11 @@
 
   networking.hostName = "x13s";
 
-  boot.loader.grub.enable = true;
-  boot.loader.grub.efiSupport = true;
-  boot.loader.grub.device = "/dev/disk/by-partlabel/disk-main-ESP";
-  # boot.loader.systemd-boot.enable = true;
-  # boot.loader.systemd-boot.configurationLimit = 5;
+  hardware.lenovo.x13s.wifiMac = "00:03:7f:12:05:4b";
+  hardware.lenovo.x13s.bluetoothMac = "12:FD:57:80:32:5F";
+
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 5;
   hardware.bluetooth.enable = true;
   networking.networkmanager.enable = true;
   systemd.tpm2.enable = false;
