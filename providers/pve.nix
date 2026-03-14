@@ -9,7 +9,7 @@
   boot.initrd.kernelModules = [ ];
   boot.initrd.postDeviceCommands = pkgs.lib.mkBefore ''
     mkdir -p /mnt
-    mount -o subvol=/ /dev/disk/by-label/system /mnt
+    mount -o subvol=/ /dev/disk/by-partlabel/disk-main-system /mnt
 
     if [ ! -e /mnt/snapshots/root-blank ] ; then
       echo "root-blank not found, creating!"
