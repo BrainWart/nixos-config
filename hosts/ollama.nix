@@ -3,7 +3,10 @@
     inputs.disko.nixosModules.disko
     ../providers/pve.nix
     ../tasks/nvidia.nix
-    ../tasks/ollama.nix
+  ];
+
+  environment.systemPackages = [
+    pkgs.python314Packages.huggingface-hub
   ];
 
   networking.hostName = "ollama";
