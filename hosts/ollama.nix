@@ -10,5 +10,6 @@
   ];
 
   networking.hostName = "ollama";
+  system.stateVersion = "25.11";
 }
 
