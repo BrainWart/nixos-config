@@ -3,6 +3,7 @@
 
   inputs = {
     # nixpkgs.url = "git+file:///home/mcginnisc/source/github.com/brainwart/nixpkgs";
+    nixpkgs-extra-unstable.url = "github:ConnorNelson/nixpkgs/code-server-4.108.2";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     x13s = {
       url = "github:BrainWart/x13s-nixos";
@@ -22,23 +23,43 @@
     # nixos-hardware.url = "path:///home/mcginnisc/source/nixos-hardware";
   };
 
-  outputs = { self, nixpkgs, flake-utils, ... } @ inputs:
-    (flake-utils.lib.eachDefaultSystem (system:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      flake-utils,
+      ...
+    }@inputs:
+    (flake-utils.lib.eachDefaultSystem (
+      system:
       let
-        pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
-        nixosConfigurations = with builtins; listToAttrs (map (host: {
-          name = host;
-          value = nixpkgs.lib.nixosSystem {
-            inherit system;
-            specialArgs = { inherit inputs; }; 
-            modules = [
-              (import (./hosts + "/${host}.nix"))
-            ];
-          };
-        }) (let
-          entries = readDir ./hosts;
-        in map (key: elemAt (match "(.+)\\.nix" (baseNameOf key)) 0)
-          (filter (key: (getAttr key entries) == "regular") (attrNames entries))));
+        pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
+        nixosConfigurations =
+          with builtins;
+          listToAttrs (
+            map
+              (host: {
+                name = host;
+                value = nixpkgs.lib.nixosSystem {
+                  inherit system;
+                  specialArgs = { inherit inputs; };
+                  modules = [
+                    (import (./hosts + "/${host}.nix"))
+                  ];
+                };
+              })
+              (
+                let
+                  entries = readDir ./hosts;
+                in
+                map (key: elemAt (match "(.+)\\.nix" (baseNameOf key)) 0) (
+                  filter (key: (getAttr key entries) == "regular") (attrNames entries)
+                )
+              )
+          );
       in
       {
         inherit nixosConfigurations;
@@ -51,11 +72,12 @@
 
         packages = {
           inherit nixosConfigurations;
-          npiperelay = pkgs.callPackage ./pkgs/npiperelay.nix {};
-          code-server = pkgs.callPackage ./pkgs/code-server/default.nix {};
+          npiperelay = pkgs.callPackage ./pkgs/npiperelay.nix { };
+          code-server = pkgs.callPackage ./pkgs/code-server/default.nix { };
         };
       }
-    )) // {
+    ))
+    // {
       nixosConfigurations = self.packages.x86_64-linux.nixosConfigurations;
     };
 }

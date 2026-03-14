@@ -149,6 +149,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-extra-unstable": {
+      "locked": {
+        "lastModified": 1770168923,
+        "narHash": "sha256-DoNPEJmqwetKBbRRF9pedPg+Y12DCVE9TIAzBKF4i6M=",
+        "owner": "ConnorNelson",
+        "repo": "nixpkgs",
+        "rev": "ad1c9a0e47e62cb0d5c2c024a5719f7c7d5fc1d8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ConnorNelson",
+        "ref": "code-server-4.108.2",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1685801374,
@@ -212,6 +228,7 @@
         "flake-utils": "flake-utils",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-extra-unstable": "nixpkgs-extra-unstable",
         "systems": "systems",
         "vscode-remote-workaround": "vscode-remote-workaround",
         "x13s": "x13s"
