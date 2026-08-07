@@ -74,6 +74,7 @@
           inherit nixosConfigurations;
           npiperelay = pkgs.callPackage ./pkgs/npiperelay.nix { };
           code-server = pkgs.callPackage ./pkgs/code-server/default.nix { };
+          openterface-qt = pkgs.callPackage ./pkgs/openterface-qt/default.nix { };
         };
       }
     ))

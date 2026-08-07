@@ -41,6 +41,8 @@
   security.polkit.enable = true; # polkit
   services.gnome.gnome-keyring.enable = true; # secret service
   security.pam.services.swaylock = {};
+  programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
   environment.systemPackages = with pkgs; [
     alacritty
     fuzzel
@@ -52,6 +54,8 @@
     git
     git-credential-oauth
     tailscale
+    xwayland-satellite
+    (pkgs.callPackage ../pkgs/openterface-qt {})
   ];
   fonts.packages = with pkgs; [
     fira-code

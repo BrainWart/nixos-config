@@ -25,7 +25,7 @@
     users.mutableUsers = false;
     users.users.mcginnisc = {
       isNormalUser = true;
-      extraGroups = [ "wheel" ];
+      extraGroups = [ "wheel" "dialout" ];
       initialHashedPassword = "$6$4kkQrVsuuIBT5/KI$OqD9eItkkCtTRe7ZVqxvcKj2YC.YA8ZZazDR4kMJ39uzp8rPqAE/ogOz.hPYTnKMwQhKCVzH1s./rOD0/8jO40";
       openssh.authorizedKeys.keys = [
         "ecdsa-sha2-nistp384 AAAAE2VjZHNhLXNoYTItbmlzdHAzODQAAAAIbmlzdHAzODQAAABhBNEWqfQnTxcMGv6pRqJt6G5uj86fwJ2BicoeDgnInmpxl7v5qCOcHgcM5BHO+Jjx+ve+t7Ds8IFzaII49AXlSZm6uo997trFjQiyE9nML47xpCz1iskmrHrz7ocwKEEzOw== yubikey"
